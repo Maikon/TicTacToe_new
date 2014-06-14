@@ -54,4 +54,16 @@ describe Board do
       expect(board.current_mark).to eq 'O'
     end
   end
+
+  describe '#game_over?' do
+    it 'returns true if the board has a winner' do
+      board = Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
+      expect(board.game_over?).to eq true
+    end
+
+    it 'returns true if the board has no available moves' do
+      board = Board.new(['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'])
+      expect(board.game_over?).to eq true
+    end
+  end
 end

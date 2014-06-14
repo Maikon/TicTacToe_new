@@ -22,6 +22,10 @@ class Board
     available_moves.length.odd? ? 'X' : 'O'
   end
 
+  def game_over?
+    winner? || available_moves.empty?
+  end
+
   private
 
   def winning_combinations
