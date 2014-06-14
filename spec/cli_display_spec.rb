@@ -31,4 +31,9 @@ describe CliDisplay do
     display.print_farewell_message
     expect(output.string).to eq "Thanks for playing!\n"
   end
+
+  it 'prints the current mark' do
+    display.current_mark('X')
+    expect(output.string).to eq "It's X's turn now\n"
+  end
 end

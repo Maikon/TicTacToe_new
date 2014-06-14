@@ -34,6 +34,10 @@ class CliDisplay
     @output.puts 'Thanks for playing!'
   end
 
+  def current_mark(mark)
+    @output.puts "It's #{mark}'s turn now"
+  end
+
   def print_board(grid)
     board = BOARD.dup
     grid.each do |position|
