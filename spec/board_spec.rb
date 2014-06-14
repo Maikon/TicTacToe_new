@@ -43,4 +43,15 @@ describe Board do
       expect(another_board.available_moves).to eq [1, 2, 3, 5, 6, 7, 8, 9]
     end
   end
+
+  describe '#current_mark' do
+    it 'returns X if no move was made on the board' do
+      expect(board.current_mark).to eq 'X'
+    end
+
+    it 'returns O if a move was made on the board' do
+      board = Board.new([1, 'X', 3, 4, 5, 6, 7, 8, 9])
+      expect(board.current_mark).to eq 'O'
+    end
+  end
 end

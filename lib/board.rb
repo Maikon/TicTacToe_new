@@ -18,6 +18,10 @@ class Board
     grid.select { |cell| cell.is_a? Fixnum }
   end
 
+  def current_mark
+    available_moves.length.odd? ? 'X' : 'O'
+  end
+
   private
 
   def winning_combinations
