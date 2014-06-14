@@ -45,5 +45,9 @@ describe Board do
          expect(board.winner?).to eq true
        end
      end
+
+     it "returns false if there's no winner" do
+       expect(board.winner?).to eq false
+     end
   end
 end
