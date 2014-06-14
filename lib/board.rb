@@ -7,7 +7,7 @@ class Board
   end
 
   def mark_position(position, mark)
-    raise Exception if !grid.include?(position)
+    raise 'Position already taken' if !grid.include?(position)
     grid[position - 1] = mark
   end
 
