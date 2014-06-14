@@ -11,5 +11,11 @@ describe Board do
       board.mark_position(1, 'X')
       expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
     end
+
+    it 'raises an error if the position is taken' do
+      board = Board.new
+      board.mark_position(1, 'X')
+      expect{ board.mark_position(1, 'O') }.to raise_error
+    end
   end
 end
