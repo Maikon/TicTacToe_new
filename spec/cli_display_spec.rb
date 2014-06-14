@@ -26,4 +26,9 @@ describe CliDisplay do
     expect(display.another_round?).to eq 'y'
     expect(output.string).to eq "Would you like to play again?\n"
   end
+
+  it 'prints a farewell message when the game is over' do
+    display.print_farewell_message
+    expect(output.string).to eq "Thanks for playing!\n"
+  end
 end

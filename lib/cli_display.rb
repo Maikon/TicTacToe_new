@@ -30,6 +30,10 @@ class CliDisplay
     @input.gets.chomp
   end
 
+  def print_farewell_message
+    @output.puts 'Thanks for playing!'
+  end
+
   def print_board(grid)
     board = BOARD.dup
     grid.each do |position|
