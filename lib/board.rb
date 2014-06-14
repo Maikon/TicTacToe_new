@@ -1,8 +1,9 @@
 class Board
   attr_reader :grid
 
-  def initialize(grid = default_grid)
+  def initialize(grid = default_grid, board_size: 3)
     @grid = grid
+    @board_size = board_size
   end
 
   def mark_position(position, mark)
@@ -33,7 +34,7 @@ class Board
   end
 
   def rows
-    grid.each_slice(3).to_a
+    grid.each_slice(@board_size).to_a
   end
 
   def columns
