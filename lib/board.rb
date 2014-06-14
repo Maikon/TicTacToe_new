@@ -11,29 +11,31 @@ class Board
   end
 
   def winner?
-    rows_and_columns.any? { |row| row.all? { |cell| cell == row.first } }
+    winning_combinations.any? { |combo| combo.all? { |cell| cell == combo.first } }
   end
 
 
   private
 
-  def rows_and_columns
-    rows + columns
+  def winning_combinations
+    rows + columns + diagonals
   end
 
   def rows
     [ [grid[0], grid[1], grid[2]],
       [grid[3], grid[4], grid[5]],
-      [grid[6], grid[7], grid[8]]
-    ]
+      [grid[6], grid[7], grid[8]] ]
   end
 
   def columns
     [ [grid[0], grid[3], grid[6]],
       [grid[1], grid[4], grid[7]],
-      [grid[2], grid[5], grid[8]],
-    ]
+      [grid[2], grid[5], grid[8]] ]
+  end
 
+  def diagonals
+    [ [grid[0], grid[4], grid[8]],
+      [grid[2], grid[4], grid[6]] ]
   end
 
   def default_grid

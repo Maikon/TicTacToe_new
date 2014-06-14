@@ -37,5 +37,13 @@ describe Board do
          expect(board.winner?).to eq true
        end
      end
+
+     [['X', 2, 3, 4, 'X', 6, 7, 8, 'X'],
+      [1, 2, 'X', 4, 'X', 6, 'X', 8, 9]].each do |diagonal|
+       it "returns true if there's a winner in a diagonal" do
+         board = Board.new(diagonal)
+         expect(board.winner?).to eq true
+       end
+     end
   end
 end
