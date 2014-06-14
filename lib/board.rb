@@ -30,8 +30,7 @@ class Board
   end
 
   def diagonals
-    [ [grid[0], grid[4], grid[8]],
-      [grid[2], grid[4], grid[6]] ]
+    [] <<  rows.map.with_index { |row, index| row[index] } << rows.reverse.map.with_index { |row, index| row[index] }
   end
 
   def default_grid
