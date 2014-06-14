@@ -18,31 +18,19 @@ describe Board do
   describe '#winner' do
     [['X', 'X', 'X', 4, 5, 6, 7, 8, 9],
      ['X', 'X', 'X', 4, 5, 6, 7, 8, 9],
-     ['X', 'X', 'X', 4, 5, 6, 7, 8, 9]].each do |row|
-       it "returns true if there's a winner in the first row" do
-        board = Board.new(row)
+     ['X', 'X', 'X', 4, 5, 6, 7, 8, 9],
+     ['X', 2, 3, 'X', 5, 6, 'X', 8, 9],
+     [1, 'X', 3, 4, 'X', 6, 7, 'X', 9],
+     [1, 2, 'X', 4, 5, 'X', 7, 8, 'X'],
+     ['X', 2, 3, 4, 'X', 6, 7, 8, 'X'],
+     [1, 2, 'X', 4, 'X', 6, 'X', 8, 9]].each do |combo|
+       it "returns true if there's a win" do
+        board = Board.new(combo)
         expect(board.winner?).to eq true
        end
      end
 
-    [['X', 2, 3, 'X', 5, 6, 'X', 8, 9],
-     [1, 'X', 3, 4, 'X', 6, 7, 'X', 9],
-     [1, 2, 'X', 4, 5, 'X', 7, 8, 'X']].each do |column|
-       it "returns true if there's a winner in a column" do
-         board = Board.new(column)
-         expect(board.winner?).to eq true
-       end
-     end
-
-     [['X', 2, 3, 4, 'X', 6, 7, 8, 'X'],
-      [1, 2, 'X', 4, 'X', 6, 'X', 8, 9]].each do |diagonal|
-       it "returns true if there's a winner in a diagonal" do
-         board = Board.new(diagonal)
-         expect(board.winner?).to eq true
-       end
-     end
-
-     it "returns false if there's no winner" do
+     it "returns false if there's no win" do
        expect(board.winner?).to eq false
      end
   end
