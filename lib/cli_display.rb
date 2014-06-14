@@ -1,5 +1,13 @@
 class CliDisplay
 
+  BOARD = <<-GRID
+* | * | *
+--|---|--
+* | * | *
+--|---|--
+* | * | *
+  GRID
+
   def initialize(output)
     @output = output
   end
@@ -9,10 +17,10 @@ class CliDisplay
   end
 
   def print_board(grid)
-    @output.puts "#{grid[0]} | #{grid[1]} | #{grid[2]}"
-    @output.puts '--|---|--'
-    @output.puts "#{grid[3]} | #{grid[4]} | #{grid[5]}"
-    @output.puts '--|---|--'
-    @output.puts "#{grid[6]} | #{grid[7]} | #{grid[8]}"
+    board = BOARD.dup
+    grid.each do |position|
+      board.sub!('*', position.to_s)
+    end
+    @output.puts board
   end
 end
