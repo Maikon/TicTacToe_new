@@ -3,10 +3,6 @@ require 'board'
 describe Board do
   let(:board) { Board.new }
 
-  it 'has a default grid' do
-    expect(board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  end
-
   describe '#mark_position' do
     it 'marks a position on grid with an X' do
       board.mark_position(1, 'X')
@@ -49,5 +45,14 @@ describe Board do
      it "returns false if there's no winner" do
        expect(board.winner?).to eq false
      end
+  end
+
+  describe '#available_moves' do
+    it 'returns the available moves from the board' do
+      board = Board.new(['X', 'O', 3, 'X', 5, 6, 7, 'X', 9])
+      expect(board.available_moves).to eq [3, 5, 6, 7, 9]
+      another_board = Board.new([1, 2, 3, 'X', 5, 6, 7, 8, 9])
+      expect(another_board.available_moves).to eq [1, 2, 3, 5, 6, 7, 8, 9]
+    end
   end
 end

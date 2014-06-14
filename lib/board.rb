@@ -14,6 +14,9 @@ class Board
     winning_combinations.any? { |combo| combo.all? { |cell| cell == combo.first } }
   end
 
+  def available_moves
+    grid.select { |cell| cell.is_a? Fixnum }
+  end
 
   private
 
