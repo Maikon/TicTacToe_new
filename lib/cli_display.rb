@@ -7,6 +7,7 @@ class CliDisplay
 --|---|--
 * | * | *
   GRID
+  SPACING = '*' * 15
 
   def initialize(output = $stdout, input = $stdin)
     @output = output
@@ -14,15 +15,20 @@ class CliDisplay
   end
 
   def greet_players
+    @output.puts SPACING
     @output.puts "Welcome to Tic Tac Toe!"
+    @output.puts SPACING
   end
 
   def ask_for_move
     @output.puts 'Choose a move from the available ones:'
-    @input.gets.chomp
+    @input.gets.chomp.to_i
   end
 
-  private
+  def another_round?
+    @output.puts 'Would you like to play again?'
+    @input.gets.chomp
+  end
 
   def print_board(grid)
     board = BOARD.dup
