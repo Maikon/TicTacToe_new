@@ -28,5 +28,14 @@ describe Board do
     it "returns true if there's no winner in a row" do
      expect(board.winner?).to eq false
     end
+
+    [['X', 2, 3, 'X', 5, 6, 'X', 8, 9],
+     [1, 'X', 3, 4, 'X', 6, 7, 'X', 9],
+     [1, 2, 'X', 4, 5, 'X', 7, 8, 'X']].each do |column|
+       it "returns true if there's a winner in a column" do
+         board = Board.new(column)
+         expect(board.winner?).to eq true
+       end
+     end
   end
 end
