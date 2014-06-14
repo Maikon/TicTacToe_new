@@ -20,14 +20,14 @@ describe Board do
   end
 
   describe '#winner' do
-    it "returns true if there's a winner in the first row" do
-     board = Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
-     expect(board.winner?).to eq true
-    end
-
-    it "returns true if there's no winner in a row" do
-     expect(board.winner?).to eq false
-    end
+    [['X', 'X', 'X', 4, 5, 6, 7, 8, 9],
+     ['X', 'X', 'X', 4, 5, 6, 7, 8, 9],
+     ['X', 'X', 'X', 4, 5, 6, 7, 8, 9]].each do |row|
+       it "returns true if there's a winner in the first row" do
+        board = Board.new(row)
+        expect(board.winner?).to eq true
+       end
+     end
 
     [['X', 2, 3, 'X', 5, 6, 'X', 8, 9],
      [1, 'X', 3, 4, 'X', 6, 7, 'X', 9],

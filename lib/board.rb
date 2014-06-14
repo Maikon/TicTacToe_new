@@ -11,13 +11,15 @@ class Board
   end
 
   def winner?
-    return true if rows.any? { |row| row.all? { |cell| cell == row.first } }
-    return true if columns.any? { |row| row.all? { |cell| cell == row.first } }
-    false
+    rows_and_columns.any? { |row| row.all? { |cell| cell == row.first } }
   end
 
 
   private
+
+  def rows_and_columns
+    rows + columns
+  end
 
   def rows
     [ [grid[0], grid[1], grid[2]],
