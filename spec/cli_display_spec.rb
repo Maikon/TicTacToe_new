@@ -3,7 +3,8 @@ require 'board'
 
 describe CliDisplay do
   let(:output) { StringIO.new }
-  let(:display) { CliDisplay.new(output) }
+  let(:input) { StringIO.new("1\ny\n") }
+  let(:display) { CliDisplay.new(output, input) }
 
   it 'greets the players' do
     display.greet_players
@@ -16,16 +17,12 @@ describe CliDisplay do
   end
 
   it 'asks the player for a move and returns the input' do
-    input = StringIO.new("1\n")
-    display = CliDisplay.new(output, input)
     expect(display.ask_for_move).to eq 1
     expect(output.string).to eq "Choose a move from the available ones:\n"
   end
 
   it 'asks the player for another round and returns the input' do
-    input = StringIO.new("y\n")
-    output = StringIO.new
-    display = CliDisplay.new(output, input)
+    input.gets
     expect(display.another_round?).to eq 'y'
     expect(output.string).to eq "Would you like to play again?\n"
   end
