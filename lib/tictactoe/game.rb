@@ -35,5 +35,15 @@ class Game
     end
     display.print_winning_message_for(board.last_move_mark) if board.winner?
     display.print_draw_message if board.available_moves.empty?
+    play_again?
+  end
+
+  def play_again?
+    answer = display.another_round?
+    if answer == 'y'
+      system("clear; bin/tictactoe")
+    else
+      display.print_farewell_message
+    end
   end
 end

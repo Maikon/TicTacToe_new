@@ -10,7 +10,7 @@ describe Game do
   let(:display) { CliDisplay.new(output, input) }
   let(:game)    { Game.new(display, board) }
 
-  it 'receives input from the user' do
+  it 'receives input from the user for a move' do
     expect(game.receive_user_input).to eq 1
     expect(game.receive_user_input).to eq 2
   end
@@ -35,7 +35,7 @@ describe Game do
 
   it "plays the game until there's a winner" do
     board = Board.new(['X', 2, 3, 4, 'O', 6, 7, 8, 9])
-    input = StringIO.new("2\n4\n3\n")
+    input = StringIO.new("2\n4\n3\nn\n")
     display = CliDisplay.new(output, input)
     game = Game.new(display, board)
     game.start
@@ -44,10 +44,21 @@ describe Game do
 
   it "plays the game until there's a draw" do
     board = Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
-    input = StringIO.new("1\n4\n3\n2\n")
+    input = StringIO.new("1\n4\n3\n2\nn\n")
     display = CliDisplay.new(output, input)
     game = Game.new(display, board)
     game.start
     expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
+  end
+
+  describe '#play_again?' do
+    it 'prints farewell message when user choses not to play again' do
+      input = StringIO.new("n\n")
+      display = CliDisplay.new(output, input)
+      game = Game.new(display)
+      game.play_again?
+      output.rewind
+      expect(output.readlines[1]).to eq "Thanks for playing!\n"
+    end
   end
 end
