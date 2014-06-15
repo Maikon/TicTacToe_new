@@ -37,7 +37,7 @@ describe Game do
     input = StringIO.new("2\n4\n3\n")
     display = CliDisplay.new(output, input)
     game = Game.new(display, board)
-    game.main_sequence
+    game.start
     expect(board.grid).to eq ['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]
   end
 
@@ -46,7 +46,7 @@ describe Game do
     input = StringIO.new("1\n4\n3\n2\n")
     display = CliDisplay.new(output, input)
     game = Game.new(display, board)
-    game.main_sequence
+    game.start
     expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
   end
 end
