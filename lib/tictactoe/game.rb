@@ -14,7 +14,15 @@ class Game
     board.mark_position(receive_user_input, board.current_mark)
   end
 
-  def move_valid?
-    board.available_moves.include?(receive_user_input)
+  def move_valid?(move)
+    board.available_moves.include?(move)
+  end
+
+  def move_sequence
+    move = receive_user_input
+    while !move_valid?(move)
+      move = receive_user_input
+    end
+    board.mark_position(move, board.current_mark)
   end
 end

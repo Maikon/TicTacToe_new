@@ -5,12 +5,13 @@ require 'cli_display'
 describe Game do
   let(:board)   { Board.new }
   let(:output)  { StringIO.new }
-  let(:input)   { StringIO.new("1\nx\n") }
+  let(:input)   { StringIO.new("1\n2\n") }
   let(:display) { CliDisplay.new(output, input) }
   let(:game)    { Game.new(display, board) }
 
   it 'receives input from the user' do
     expect(game.receive_user_input).to eq 1
+    expect(game.receive_user_input).to eq 2
   end
 
   it 'alters the board based on user input' do
@@ -18,8 +19,16 @@ describe Game do
     expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
+  it 'returns true if the move is valid, false otherwise' do
+    expect(game.move_valid?(1)).to eq true
+    expect(game.move_valid?('x')).to eq false
+  end
+
   it 'does not alter the board if the input is invalid' do
-    expect(game.move_valid?).to eq true
-    expect(game.move_valid?).to eq false
+    input = StringIO.new("x\n2\n")
+    display = CliDisplay.new(output, input)
+    game = Game.new(display, board)
+    game.move_sequence
+    expect(board.grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
   end
 end
