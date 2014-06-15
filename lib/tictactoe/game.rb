@@ -25,4 +25,10 @@ class Game
     end
     board.mark_position(move, board.current_mark)
   end
+
+  def main_sequence
+    until board.game_over?
+      move_sequence
+    end
+  end
 end

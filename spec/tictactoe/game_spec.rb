@@ -31,4 +31,13 @@ describe Game do
     game.move_sequence
     expect(board.grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
   end
+
+  it "plays the game until there's a winner" do
+    board = Board.new(['X', 2, 3, 4, 'O', 6, 7, 8, 9])
+    input = StringIO.new("2\n4\n3\n")
+    display = CliDisplay.new(output, input)
+    game = Game.new(display, board)
+    game.main_sequence
+    expect(board.grid).to eq ['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]
+  end
 end
