@@ -37,4 +37,9 @@ describe CliDisplay do
     display.current_mark('X')
     expect(output.string).to eq "It's X's turn now\n"
   end
+
+  it 'prints an invalid move message' do
+    display.invalid_move_message
+    expect(output.string).to eq "Please choose a valid move from the board:\n"
+  end
 end

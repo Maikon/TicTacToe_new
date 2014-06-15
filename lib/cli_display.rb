@@ -34,6 +34,10 @@ class CliDisplay
     @output.puts 'Thanks for playing!'
   end
 
+  def invalid_move_message
+    @output.puts 'Please choose a valid move from the board:'
+  end
+
   def current_mark(mark)
     @output.puts "It's #{mark}'s turn now"
   end
