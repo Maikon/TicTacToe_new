@@ -26,7 +26,7 @@ class CliDisplay
   end
 
   def another_round?
-    @output.puts 'Would you like to play again?'
+    @output.puts "Would you like to play again? Press 'y' if so or any other key to quit:"
     @input.gets.chomp
   end
 
