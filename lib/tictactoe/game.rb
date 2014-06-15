@@ -22,6 +22,7 @@ class Game
   def move_sequence
     move = receive_user_input
     while !move_valid?(move)
+      display.invalid_move_message
       move = receive_user_input
     end
     board.mark_position(move, board.current_mark)
@@ -32,5 +33,7 @@ class Game
     until board.game_over?
       move_sequence
     end
+    display.print_winning_message_for(board.last_move_mark) if board.winner?
+    display.print_draw_message if board.available_moves.empty?
   end
 end
