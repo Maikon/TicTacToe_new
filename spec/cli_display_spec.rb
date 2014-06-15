@@ -42,4 +42,9 @@ describe CliDisplay do
     display.invalid_move_message
     expect(output.string).to eq "Please choose a valid move from the board:\n"
   end
+
+  it 'prints a winning message' do
+    display.print_winning_message_for('X')
+    expect(output.string).to eq "X won the game!\n"
+  end
 end
