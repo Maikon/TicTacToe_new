@@ -1,5 +1,5 @@
 require 'cli_display'
-require 'board'
+require 'tictactoe/board'
 
 describe CliDisplay do
   let(:output) { StringIO.new }

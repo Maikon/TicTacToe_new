@@ -1,4 +1,4 @@
-require 'board'
+require 'tictactoe/board'
 
 describe Board do
   let(:board) { Board.new }

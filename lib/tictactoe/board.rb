@@ -1,7 +1,7 @@
 class Board
   attr_reader :grid
 
-  def initialize(grid = default_grid, board_size: 3)
+  def initialize(grid = default_grid, board_size = 3)
     @grid = grid
     @board_size = board_size
   end
