@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require './lib/cli_display.rb'
+$LOAD_PATH << 'lib/tictactoe'
+require 'board'
+require 'game'
+
+Game.new.start
