@@ -13,4 +13,8 @@ class Game
   def mark_board_position
     board.mark_position(receive_user_input, board.current_mark)
   end
+
+  def move_valid?
+    board.available_moves.include?(receive_user_input)
+  end
 end
