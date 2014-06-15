@@ -47,4 +47,9 @@ describe CliDisplay do
     display.print_winning_message_for('X')
     expect(output.string).to eq "X won the game!\n"
   end
+
+  it 'prints a draw message' do
+    display.print_draw_message
+    expect(output.string).to eq "The game is a draw\n"
+  end
 end

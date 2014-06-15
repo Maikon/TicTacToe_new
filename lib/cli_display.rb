@@ -38,6 +38,10 @@ class CliDisplay
     @output.puts "#{mark} won the game!"
   end
 
+  def print_draw_message
+    @output.puts 'The game is a draw'
+  end
+
   def invalid_move_message
     @output.puts 'Please choose a valid move from the board:'
   end
