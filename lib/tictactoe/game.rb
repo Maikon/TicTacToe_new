@@ -1,7 +1,7 @@
 class Game
   attr_reader :display, :board
 
-  def initialize(display, board)
+  def initialize(display = CliDisplay.new, board = Board.new)
     @display = display
     @board = board
   end
