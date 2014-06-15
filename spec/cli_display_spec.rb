@@ -1,5 +1,6 @@
 require 'cli_display'
 require 'tictactoe/board'
+require 'spec_helper'
 
 describe CliDisplay do
   let(:output) { StringIO.new }

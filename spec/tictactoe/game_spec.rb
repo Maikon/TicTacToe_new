@@ -1,6 +1,7 @@
 require 'tictactoe/game'
 require 'tictactoe/board'
 require 'cli_display'
+require 'spec_helper'
 
 describe Game do
   let(:board)   { Board.new }
