@@ -23,6 +23,10 @@ class Board
     available_moves.length.odd? ? 'X' : 'O'
   end
 
+  def last_move_mark
+    current_mark == 'X' ? 'O' : 'X'
+  end
+
   def game_over?
     winner? || available_moves.empty?
   end

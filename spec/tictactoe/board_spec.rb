@@ -67,4 +67,16 @@ describe Board do
       expect(board.game_over?).to eq true
     end
   end
+
+  describe '#last_mark' do
+    it "returns X if it's O turn to make a move" do
+      board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+      expect(board.last_move_mark).to eq 'X'
+    end
+
+    it "returns O if it's X turn to make a move" do
+      board = Board.new(['X', 2, 'O', 4, 5, 6, 7, 8, 9])
+      expect(board.last_move_mark).to eq 'O'
+    end
+  end
 end
