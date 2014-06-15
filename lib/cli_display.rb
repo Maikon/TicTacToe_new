@@ -20,8 +20,8 @@ class CliDisplay
     @output.puts SPACING
   end
 
-  def ask_for_move
-    @output.puts 'Choose a move from the available ones:'
+  def ask_for_move(mark)
+    @output.puts "It's #{mark}'s turn to choose a move from the available ones:"
     @input.gets.chomp.to_i
   end
 

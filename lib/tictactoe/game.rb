@@ -7,7 +7,8 @@ class Game
   end
 
   def receive_user_input
-    display.ask_for_move
+    display.print_board(board.grid)
+    display.ask_for_move(board.current_mark)
   end
 
   def mark_board_position
@@ -27,6 +28,7 @@ class Game
   end
 
   def start
+    display.greet_players
     until board.game_over?
       move_sequence
     end

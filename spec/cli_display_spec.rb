@@ -18,8 +18,8 @@ describe CliDisplay do
   end
 
   it 'asks the player for a move and returns the input' do
-    expect(display.ask_for_move).to eq 1
-    expect(output.string).to eq "Choose a move from the available ones:\n"
+    expect(display.ask_for_move('X')).to eq 1
+    expect(output.string).to eq "It's X's turn to choose a move from the available ones:\n"
   end
 
   it 'asks the player for another round and returns the input' do
