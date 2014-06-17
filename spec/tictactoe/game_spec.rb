@@ -1,7 +1,6 @@
 require 'tictactoe/game'
 require 'tictactoe/board'
 require 'tictactoe/fake_display'
-require 'cli_display'
 require 'spec_helper'
 
 describe Game do
