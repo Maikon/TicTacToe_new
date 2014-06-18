@@ -81,5 +81,14 @@ describe CliDisplay do
       display.play_again?(fake_board)
       expect(fake_board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
+
+    it 'otherwise prints a farewell message' do
+      input = StringIO.new("n\n")
+      output = StringIO.new
+      display = CliDisplay.new(output, input)
+      display.play_again?(false)
+      output.rewind
+      expect(output.readlines[1]).to eq "Thanks for playing!\n"
+    end
   end
 end

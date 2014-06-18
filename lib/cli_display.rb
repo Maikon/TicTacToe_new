@@ -34,6 +34,8 @@ class CliDisplay
     answer = another_round?
     if answer == 'y'
       board.reset
+    else
+      print_farewell_message
     end
   end
 
