@@ -30,6 +30,13 @@ class CliDisplay
     @input.gets.chomp
   end
 
+  def play_again?(board)
+    answer = another_round?
+    if answer == 'y'
+      board.reset
+    end
+  end
+
   def print_farewell_message
     @output.puts 'Thanks for playing!'
   end
@@ -50,7 +57,7 @@ class CliDisplay
     @output.puts "It's #{mark}'s turn now"
   end
 
-  def print_board(grid)
+  def show_board(grid)
     board = BOARD.dup
     grid.each do |position|
       board.sub!('*', position.to_s)
