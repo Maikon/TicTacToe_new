@@ -31,6 +31,12 @@ class Board
     winner? || available_moves.empty?
   end
 
+  def reset
+    grid.each.with_index(1) do |position, index|
+      grid[index - 1] = index
+    end
+  end
+
   private
 
   def winning_combinations
