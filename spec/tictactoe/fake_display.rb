@@ -12,7 +12,7 @@ module TicTacToe
     def print_winning_message_for(mark)
     end
 
-    def print_board(grid)
+    def show_board(grid)
     end
 
     def ask_for_move(mark)
@@ -26,10 +26,12 @@ module TicTacToe
     end
 
     def print_farewell_message
-      "Thanks for playing!\n"
     end
 
     def print_draw_message
+    end
+
+    def play_again?
     end
   end
 end

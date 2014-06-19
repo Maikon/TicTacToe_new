@@ -46,11 +46,4 @@ describe Game do
     expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
   end
 
-  describe '#play_again?' do
-    it 'prints farewell message when user choses not to play again' do
-      display = TicTacToe::FakeDisplay.new(["n\n"])
-      game = Game.new(display)
-      expect(game.play_again?).to eq "Thanks for playing!\n"
-    end
-  end
 end
