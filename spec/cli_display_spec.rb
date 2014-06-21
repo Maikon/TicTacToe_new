@@ -1,7 +1,7 @@
 require 'cli_display'
 require 'tictactoe/board'
 require 'tictactoe/fake_board'
-#require 'spec_helper'
+require 'spec_helper'
 
 describe CliDisplay do
   let(:output) { StringIO.new }
