@@ -33,8 +33,17 @@ class Game
     until board.game_over?
       move_sequence
     end
+    game_over_sequence
+  end
+
+  private
+
+  def game_over_sequence
     display.print_winning_message_for(board.last_move_mark) if board.winner?
     display.print_draw_message if board.available_moves.empty?
-    display.play_again?
+    if display.play_again?
+      display.clear_screen
+      Game.new.start
+    end
   end
 end

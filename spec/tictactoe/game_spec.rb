@@ -46,5 +46,13 @@ describe Game do
       game.start
       expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
     end
+
+    it "offers the player another round" do
+      board = Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
+      display = TicTacToe::FakeDisplay.new([1, 4, 3, 2, "n\n"])
+      game = Game.new(display, board)
+      expect(game).to receive(:game_over_sequence)
+      game.start
+    end
   end
 end
