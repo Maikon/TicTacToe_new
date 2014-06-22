@@ -32,10 +32,8 @@ class Board
     winner? || available_moves.empty?
   end
 
-  def reset
-    grid.each.with_index(1) do |position, index|
-      grid[index - 1] = index
-    end
+  def reset_value(value)
+    grid[value - 1] = value
   end
 
   private

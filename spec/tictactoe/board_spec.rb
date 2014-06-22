@@ -80,10 +80,10 @@ describe Board do
     end
   end
 
-  describe '#reset' do
-    it 'resets the board' do
-      board = Board.new(['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'])
-      board.reset
+  describe '#reset_value' do
+    it 'resets the value at the given cell' do
+      board = Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+      board.reset_value(1)
       expect(board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
   end
