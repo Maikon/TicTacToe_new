@@ -32,11 +32,7 @@ class CliDisplay
 
   def play_again?
     answer = another_round?
-    if answer == 'y'
-      true
-    else
-      print_farewell_message
-    end
+    answer == 'y' ? true : false
   end
 
   def print_farewell_message

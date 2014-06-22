@@ -86,13 +86,11 @@ describe CliDisplay do
       expect(display.play_again?).to eq true
     end
 
-    it 'otherwise prints a farewell message' do
+    it 'otherwise returns false' do
       input = StringIO.new("n\n")
       output = StringIO.new
       display = CliDisplay.new(output, input)
-      display.play_again?
-      output.rewind
-      expect(output.readlines[1]).to eq "Thanks for playing!\n"
+      expect(display.play_again?).to eq false
     end
   end
 end
