@@ -1,6 +1,7 @@
 require 'tictactoe/game'
 require 'tictactoe/board'
 require 'tictactoe/fake_display'
+require 'tictactoe/fake_game'
 require 'spec_helper'
 
 describe Game do
@@ -53,6 +54,13 @@ describe Game do
       game = Game.new(display, board)
       expect(game).to receive(:game_over_sequence)
       game.start
+    end
+  end
+
+  describe '#start_new_game' do
+    it 'clears the screen and starts new game' do
+      game = TicTacToe::FakeGame.new
+      expect(game.start_new_game).to eq true
     end
   end
 end
