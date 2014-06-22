@@ -71,6 +71,13 @@ describe CliDisplay do
     end
   end
 
+  describe '#clear_screen' do
+    it 'clears the screen' do
+      display.clear_screen
+      expect(output.string).to eq "\e[H\e[2J\n"
+    end
+  end
+
   describe '#play_again?' do
     it 'returns true if the answer is yes' do
       input = StringIO.new("y\n")

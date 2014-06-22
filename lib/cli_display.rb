@@ -51,6 +51,10 @@ class CliDisplay
     @output.puts 'The game is a draw'
   end
 
+  def clear_screen
+    @output.puts "\e[H\e[2J"
+  end
+
   def invalid_move_message
     @output.puts 'Please choose a valid move from the board:'
   end
