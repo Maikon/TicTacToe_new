@@ -30,10 +30,10 @@ class CliDisplay
     @input.gets.chomp
   end
 
-  def play_again?(board)
+  def play_again?
     answer = another_round?
     if answer == 'y'
-      board.reset
+      true
     else
       print_farewell_message
     end

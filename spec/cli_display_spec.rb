@@ -1,11 +1,10 @@
 require 'cli_display'
 require 'tictactoe/board'
-require 'tictactoe/fake_board'
 require 'spec_helper'
 
 describe CliDisplay do
-  let(:output) { StringIO.new }
-  let(:input) { StringIO.new("1\ny\n") }
+  let(:output)  { StringIO.new }
+  let(:input)   { StringIO.new("1\ny\n") }
   let(:display) { CliDisplay.new(output, input) }
 
   describe '#greet_players' do
@@ -73,20 +72,18 @@ describe CliDisplay do
   end
 
   describe '#play_again?' do
-    it 'resets the board if answer is yes' do
+    it 'returns true if the answer is yes' do
       input = StringIO.new("y\n")
       output = StringIO.new
       display = CliDisplay.new(output, input)
-      fake_board = TicTacToe::FakeBoard.new(['X', 'O', 'X', 'O', 5, 6, 7, 8, 9])
-      display.play_again?(fake_board)
-      expect(fake_board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      expect(display.play_again?).to eq true
     end
 
     it 'otherwise prints a farewell message' do
       input = StringIO.new("n\n")
       output = StringIO.new
       display = CliDisplay.new(output, input)
-      display.play_again?(false)
+      display.play_again?
       output.rewind
       expect(output.readlines[1]).to eq "Thanks for playing!\n"
     end
