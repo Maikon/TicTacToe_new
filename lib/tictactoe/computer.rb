@@ -22,11 +22,9 @@ class Computer
     end
 
     if board.current_mark == mark
-      maximum_score = score.max_by { |move, score| score }[1]
-      return maximum_score
+      score.max_by { |move, score| score }[1]
     else
-      minimum_score = score.min_by { |move, score| score }[1]
-      return minimum_score
+      score.min_by { |move, score| score }[1]
     end
   end
 
