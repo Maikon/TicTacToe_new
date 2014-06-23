@@ -36,6 +36,10 @@ class Board
     grid[value - 1] = value
   end
 
+  def win_for(mark)
+    winning_combinations.any? { |combo| combo.all? { |cell| cell == mark } }
+  end
+
   private
 
   def winning_combinations

@@ -87,4 +87,13 @@ describe Board do
       expect(board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
   end
+
+  describe '#win_for' do
+    it 'returns true if the mark given has won' do
+      board = Board.new([1, 'X', 'X', 4, 5, 6, 7, 8, 9])
+      expect(board.win_for('X')).to eq false
+      board.mark_position(1, 'X')
+      expect(board.win_for('X')).to eq true
+    end
+  end
 end
