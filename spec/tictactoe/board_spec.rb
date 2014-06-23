@@ -96,4 +96,13 @@ describe Board do
       expect(board.win_for('X')).to eq true
     end
   end
+
+  describe '#draw' do
+    it 'returns true if there are no moves left' do
+      board = Board.new(['X', 2, 'O', 'O', 'X', 'X', 'X', 'O', 'O'])
+      expect(board.draw?).to eq false
+      board.mark_position(2, 'X')
+      expect(board.draw?).to eq true
+    end
+  end
 end

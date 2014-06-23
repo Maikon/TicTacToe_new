@@ -12,6 +12,10 @@ class Board
     grid[position - 1] = mark
   end
 
+  def draw?
+    available_moves.empty?
+  end
+
   def winner?
     winning_combinations.any? { |combo| combo.all? { |cell| cell == combo.first } }
   end
