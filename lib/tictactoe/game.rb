@@ -11,10 +11,6 @@ class Game
     display.ask_for_move(board.current_mark)
   end
 
-  def mark_board_position
-    board.mark_position(receive_user_input, board.current_mark)
-  end
-
   def move_valid?(move)
     board.available_moves.include?(move)
   end

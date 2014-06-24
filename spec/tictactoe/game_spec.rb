@@ -16,13 +16,6 @@ describe Game do
     end
   end
 
-  describe '#mark_board_position' do
-    it 'alters the board based on user input' do
-      game.mark_board_position
-      expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
-    end
-  end
-
   describe '#move_valid' do
     it 'returns true if the move is valid, false otherwise' do
       expect(game.move_valid?(1)).to eq true

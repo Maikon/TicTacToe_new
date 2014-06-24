@@ -16,7 +16,7 @@ describe CliDisplay do
 
   describe '#ask_for_game_type' do
     it 'asks user to choose type of game and returns the input' do
-      expect(display.ask_for_game_type).to eq 1
+      expect(display.ask_for_game_type).to eq "1\n"
       expect(output.string).to eq "Please choose the number for the game you want to play: 1) Human vs Human 2) Human vs Computer\n"
     end
   end
@@ -98,6 +98,16 @@ describe CliDisplay do
       output = StringIO.new
       display = CliDisplay.new(output, input)
       expect(display.play_again?).to eq false
+    end
+  end
+
+  describe '#computer_goes_first?' do
+    it 'returns true if the answer is yes' do
+      input = StringIO.new("y\n")
+      output = StringIO.new
+      display = CliDisplay.new(output, input)
+      expect(display.computer_goes_first?).to eq true
+      expect(output.string).to eq "Would you like the computer to go first? Press 'y' for yes, any other key for no.\n"
     end
   end
 end

@@ -22,22 +22,12 @@ class CliDisplay
 
   def ask_for_game_type
     @output.puts "Please choose the number for the game you want to play: 1) Human vs Human 2) Human vs Computer"
-    @input.gets.to_i
+    @input.gets
   end
 
   def ask_for_move(mark)
     @output.puts "It's #{mark}'s turn to choose a move from the available ones:"
     @input.gets.chomp.to_i
-  end
-
-  def another_round?
-    @output.puts "Would you like to play again? Press 'y' if so or any other key to quit:"
-    @input.gets.chomp
-  end
-
-  def play_again?
-    answer = another_round?
-    answer == 'y' ? true : false
   end
 
   def print_farewell_message
@@ -50,6 +40,22 @@ class CliDisplay
 
   def print_draw_message
     @output.puts 'The game is a draw'
+  end
+
+  def play_again?
+    answer = another_round?
+    answer == 'y'
+  end
+
+  def computer_goes_first?
+    @output.puts "Would you like the computer to go first? Press 'y' for yes, any other key for no."
+    answer = @input.gets.chomp
+    answer == 'y'
+  end
+
+  def another_round?
+    @output.puts "Would you like to play again? Press 'y' if so or any other key to quit:"
+    @input.gets.chomp
   end
 
   def clear_screen
