@@ -8,7 +8,7 @@ class Computer
   def minimax(board, depth = 0, score = {})
     return 10 if board.win_for(mark)
     return -10 if board.win_for(opponent)
-    return 1 if board.draw?
+    return 0 if board.draw?
 
     board.available_moves.each do |move|
       board.mark_position(move, board.current_mark)
