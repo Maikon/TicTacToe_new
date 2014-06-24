@@ -1,9 +1,11 @@
 class Game
-  attr_reader :display, :board
+  attr_reader :display, :board, :computer
 
-  def initialize(display = CliDisplay.new, board = Board.new)
+  def initialize(display = CliDisplay.new, board = Board.new, computer = Computer.new)
     @display = display
     @board = board
+    @computer = computer
+  end
   end
 
   def receive_user_input
@@ -41,5 +43,10 @@ class Game
   def start_new_game
     display.clear_screen
     Game.new.start
+  end
+
+  def computer_makes_move
+    computer.choose_mark(board)
+    computer.make_move(board)
   end
 end
