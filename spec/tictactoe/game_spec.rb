@@ -9,26 +9,34 @@ describe Game do
   let(:display) { TicTacToe::FakeDisplay.new([1, 2]) }
   let(:game)    { Game.new(display, board) }
 
-  it 'receives input from the user for a move' do
-    expect(game.receive_user_input).to eq 1
-    expect(game.receive_user_input).to eq 2
+  describe '#receive_user_input' do
+    it 'receives input from the user for a move' do
+      expect(game.receive_user_input).to eq 1
+      expect(game.receive_user_input).to eq 2
+    end
   end
 
-  it 'alters the board based on user input' do
-    game.mark_board_position
-    expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
+  describe '#mark_board_position' do
+    it 'alters the board based on user input' do
+      game.mark_board_position
+      expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
+    end
   end
 
-  it 'returns true if the move is valid, false otherwise' do
-    expect(game.move_valid?(1)).to eq true
-    expect(game.move_valid?('x')).to eq false
+  describe '#move_valid' do
+    it 'returns true if the move is valid, false otherwise' do
+      expect(game.move_valid?(1)).to eq true
+      expect(game.move_valid?('x')).to eq false
+    end
   end
 
-  it 'does not alter the board if the input is invalid' do
-    display = TicTacToe::FakeDisplay.new([false, 2])
-    game = Game.new(display, board)
-    game.move_sequence
-    expect(board.grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
+  describe '#move_sequence' do
+    it 'does not alter the board if the input is invalid' do
+      display = TicTacToe::FakeDisplay.new([false, 2])
+      game = Game.new(display, board)
+      game.move_sequence
+      expect(board.grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
+    end
   end
 
   describe '#start' do
