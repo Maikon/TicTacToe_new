@@ -14,13 +14,6 @@ describe CliDisplay do
     end
   end
 
-  describe '#ask_for_game_type' do
-    it 'asks user to choose type of game and returns the input' do
-      expect(display.ask_for_game_type).to eq "1\n"
-      expect(output.string).to eq "Please choose the number for the game you want to play: 1) Human vs Human 2) Human vs Computer\n"
-    end
-  end
-
   describe '#print_board' do
     it 'prints the board' do
       display.show_board(Board.new.grid)
@@ -77,23 +70,24 @@ describe CliDisplay do
     end
   end
 
-  describe '#another_round' do
-    it 'asks the player for another round and returns the input' do
-      input = StringIO.new("y\n")
-      output = StringIO.new
-      display = CliDisplay.new(output, input)
-      expect(display.another_round?).to eq true
-      expect(output.string).to eq "Would you like to play again? Press 'y' if so or any other key to quit:\n"
+  describe '#ask_for_game_type' do
+    it 'asks user to choose type of game and returns the input' do
+      expect(display.ask_for_game_type).to eq "1\n"
+      expect(output.string).to eq "Please choose the number for the game you want to play: 1) Human vs Human 2) Human vs Computer\n"
     end
   end
 
-  describe '#computer_goes_first?' do
-    it 'returns true if the answer is yes' do
-      input = StringIO.new("y\n")
-      output = StringIO.new
-      display = CliDisplay.new(output, input)
-      expect(display.computer_goes_first?).to eq true
-      expect(output.string).to eq "Would you like the computer to go first? Press 'y' for yes, any other key for no.\n"
+  { 'another_round?' => "Would you like to play again? Press 'y' if so or any other key to quit:\n",
+    'computer_goes_first?' => "Would you like the computer to go first? Press 'y' for yes, any other key for no.\n"
+  }.each do |method_name, method_string|
+    describe "#{name}" do
+      it 'returns true if the answer is yes' do
+        input = StringIO.new("y\n")
+        output = StringIO.new
+        display = CliDisplay.new(output, input)
+        expect(display.send(:"#{method_name}")).to eq true
+        expect(output.string).to eq method_string
+      end
     end
   end
 end
