@@ -17,6 +17,16 @@ describe Computer do
     end
   end
 
+  describe '#make_move' do
+    it 'makes a move on the board' do
+      board = Board.new(['X', 2, 3, 'X', 'O', 6, 7, 8, 9])
+      computer = Computer.new
+      computer.choose_mark(board)
+      computer.make_move(board)
+      expect(board.grid).to eq ['X', 2, 3, 'X', 'O', 6, 'O', 8, 9]
+    end
+  end
+
   describe '#minimax' do
     it 'returns winning move' do
       board = Board.new(['X', 'X', 3, 'O', 5, 6, 'O', 8, 9])

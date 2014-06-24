@@ -5,6 +5,11 @@ class Computer
     board.available_moves.length.odd? ? @mark = 'X' : @mark = 'O'
   end
 
+  def make_move(board)
+    best_move = minimax(board)
+    board.mark_position(best_move, mark)
+  end
+
   def minimax(board, depth = 0, score = {})
     return 10 if board.win_for(mark)
     return -10 if board.win_for(opponent)
