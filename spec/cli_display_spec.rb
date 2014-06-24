@@ -35,14 +35,6 @@ describe CliDisplay do
     end
   end
 
-  describe '#another_round' do
-    it 'asks the player for another round and returns the input' do
-      input.gets
-      expect(display.another_round?).to eq 'y'
-      expect(output.string).to eq "Would you like to play again? Press 'y' if so or any other key to quit:\n"
-    end
-  end
-
   describe '#farewell_message' do
     it 'prints a farewell message when the game is over' do
       display.print_farewell_message
@@ -85,19 +77,13 @@ describe CliDisplay do
     end
   end
 
-  describe '#play_again?' do
-    it 'returns true if the answer is yes' do
+  describe '#another_round' do
+    it 'asks the player for another round and returns the input' do
       input = StringIO.new("y\n")
       output = StringIO.new
       display = CliDisplay.new(output, input)
-      expect(display.play_again?).to eq true
-    end
-
-    it 'otherwise returns false' do
-      input = StringIO.new("n\n")
-      output = StringIO.new
-      display = CliDisplay.new(output, input)
-      expect(display.play_again?).to eq false
+      expect(display.another_round?).to eq true
+      expect(output.string).to eq "Would you like to play again? Press 'y' if so or any other key to quit:\n"
     end
   end
 
