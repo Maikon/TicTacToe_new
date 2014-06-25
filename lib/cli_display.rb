@@ -44,14 +44,12 @@ class CliDisplay
 
   def computer_goes_first?
     @output.puts "Would you like the computer to go first? Press 'y' for yes, any other key for no."
-    answer = @input.gets.chomp
-    answer == 'y'
+    answer_is_yes?
   end
 
   def another_round?
     @output.puts "Would you like to play again? Press 'y' if so or any other key to quit:"
-    answer = @input.gets.chomp
-    answer == 'y'
+    answer_is_yes?
   end
 
   def clear_screen
@@ -72,5 +70,12 @@ class CliDisplay
       board.sub!('*', position.to_s)
     end
     @output.puts board
+  end
+
+  private
+
+  def answer_is_yes?
+    answer = @input.gets.chomp
+    answer == 'y'
   end
 end
