@@ -4,5 +4,6 @@ require './lib/cli_display.rb'
 $LOAD_PATH << 'lib/tictactoe'
 require 'board'
 require 'game'
+require 'computer'
 
 Game.new.start
