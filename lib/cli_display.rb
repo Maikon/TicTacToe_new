@@ -22,7 +22,7 @@ class CliDisplay
 
   def ask_for_game_type
     @output.puts "Please choose the number for the game you want to play: 1) Human vs Human 2) Human vs Computer"
-    @input.gets
+    @input.gets.chomp
   end
 
   def ask_for_move(mark)

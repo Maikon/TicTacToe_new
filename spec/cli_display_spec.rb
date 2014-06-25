@@ -72,7 +72,7 @@ describe CliDisplay do
 
   describe '#ask_for_game_type' do
     it 'asks user to choose type of game and returns the input' do
-      expect(display.ask_for_game_type).to eq "1\n"
+      expect(display.ask_for_game_type).to eq '1'
       expect(output.string).to eq "Please choose the number for the game you want to play: 1) Human vs Human 2) Human vs Computer\n"
     end
   end
