@@ -12,10 +12,10 @@ describe Game do
 
   describe '#select_game' do
     it 'human vs computer' do
-      display = TicTacToe::FakeDisplay.new(['1', 3, 4])
+      display = TicTacToe::FakeDisplay.new(['2', 3, 4])
       board = Board.new(['X', 'O', 3, 4, 'O', 6, 'O', 'X', 'X'])
       game = Game.new(display, board)
-      game.play_chosen_game
+      game.start
       expect(board.grid).to eq ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X']
     end
   end

@@ -9,17 +9,11 @@ class Game
 
   def start
     display.greet_players
+    @choice = select_game
     until board.game_over?
       move_sequence
     end
     game_over_sequence
-  end
-
-  def play_chosen_game
-    choice = select_game
-    if choice == '1'
-      human_makes_move
-    end
   end
 
   def select_game
@@ -33,22 +27,13 @@ class Game
       move = receive_user_input
     end
     board.mark_position(move, board.current_mark)
-  end
-
-  def human_makes_move
-    move = receive_user_input
-    while !move_valid?(move)
-      display.invalid_move_message
-      move = receive_user_input
-    end
-    board.mark_position(move, board.current_mark)
-    computer_makes_move
+    computer_makes_move if @choice == '2'
   end
 
   def computer_makes_move
     computer.choose_mark(board)
     computer.make_move(board) unless board.game_over?
-    human_makes_move unless board.game_over?
+    move_sequence unless board.game_over?
   end
 
   def move_valid?(move)
