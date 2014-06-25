@@ -6,6 +6,10 @@ module TicTacToe
       @moves = moves
     end
 
+    def ask_for_game_type
+      @moves.shift
+    end
+
     def greet_players
     end
 
@@ -32,6 +36,10 @@ module TicTacToe
     end
 
     def play_again?
+    end
+
+    def computer_goes_first?
+      @moves.shift
     end
   end
 end
