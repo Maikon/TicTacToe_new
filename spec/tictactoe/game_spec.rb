@@ -10,6 +10,16 @@ describe Game do
   let(:display) { TicTacToe::FakeDisplay.new([1, 2]) }
   let(:game)    { Game.new(display, board) }
 
+  describe '#select_game' do
+    it 'human vs computer' do
+      display = TicTacToe::FakeDisplay.new(['1', 3, 4])
+      board = Board.new(['X', 'O', 3, 4, 'O', 6, 'O', 'X', 'X'])
+      game = Game.new(display, board)
+      game.play_chosen_game
+      expect(board.grid).to eq ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X']
+    end
+  end
+
   describe '#receive_user_input' do
     it 'receives input from the user for a move' do
       expect(game.receive_user_input).to eq 1
@@ -36,7 +46,7 @@ describe Game do
   describe '#start' do
     it "plays the game until there's a winner" do
       board = Board.new(['X', 2, 3, 4, 'O', 6, 7, 8, 9])
-      display = TicTacToe::FakeDisplay.new([2, 4, 3, "n\n"])
+      display = TicTacToe::FakeDisplay.new([1, 2, 4, 3, "n\n"])
       game = Game.new(display, board)
       game.start
       expect(board.grid).to eq ['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]
@@ -44,7 +54,7 @@ describe Game do
 
     it "plays the game until there's a draw" do
       board = Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
-      display = TicTacToe::FakeDisplay.new([1, 4, 3, 2, "n\n"])
+      display = TicTacToe::FakeDisplay.new([1, 1, 4, 3, 2, "n\n"])
       game = Game.new(display, board)
       game.start
       expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
@@ -63,15 +73,6 @@ describe Game do
     it 'clears the screen and starts new game' do
       game = TicTacToe::FakeGame.new
       expect(game.start_new_game).to eq true
-    end
-  end
-
-  describe '#computer_makes_move' do
-    it 'makes a move on the board' do
-      board = Board.new(['X', 2, 'X', 4, 'O', 6, 7, 8, 9])
-      game  = Game.new(display, board)
-      game.computer_makes_move
-      expect(board.grid).to eq ['X', 'O', 'X', 4, 'O', 6, 7, 8, 9]
     end
   end
 end
