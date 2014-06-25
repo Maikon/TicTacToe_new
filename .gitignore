@@ -1,2 +1,4 @@
 coverage
 .bundle
+run-test.sh
+*swp
