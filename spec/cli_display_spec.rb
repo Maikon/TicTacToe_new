@@ -82,20 +82,18 @@ describe CliDisplay do
       input = StringIO.new("2\n")
       output = StringIO.new
       display = CliDisplay.new(output, input)
-      display.ask_for_game_type
-      expect(display.computer_goes_first?).to eq true
+      choice = display.ask_for_game_type
+      expect(display.computer_goes_first?(choice)).to eq true
     end
   end
 
-  { 'another_round?' => "Would you like to play again? Press 'y' if so or any other key to quit:\n"}.each do |method_name, method_string|
-    describe "#{name}" do
+    describe '#another_round?' do
       it 'returns true if the answer is yes' do
         input = StringIO.new("y\n")
         output = StringIO.new
         display = CliDisplay.new(output, input)
-        expect(display.send(:"#{method_name}")).to eq true
-        expect(output.string).to eq method_string
-      end
+        expect(display.another_round?).to eq true
+        expect(output.string).to eq "Would you like to play again? Press 'y' if so or any other key to quit:\n"
     end
   end
 end

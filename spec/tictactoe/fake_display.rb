@@ -38,8 +38,8 @@ module TicTacToe
     def play_again?
     end
 
-    def computer_goes_first?
-      @moves.shift
+    def computer_goes_first?(choice)
+      choice == '2'
     end
   end
 end

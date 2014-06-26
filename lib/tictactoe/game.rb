@@ -27,7 +27,7 @@ class Game
       move = receive_user_input
     end
     board.mark_position(move, board.current_mark)
-    computer_makes_move if @choice == '2'
+    computer_makes_move if display.computer_goes_first?(@choice)
   end
 
   def computer_makes_move
