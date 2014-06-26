@@ -77,9 +77,17 @@ describe CliDisplay do
     end
   end
 
-  { 'another_round?' => "Would you like to play again? Press 'y' if so or any other key to quit:\n",
-    'computer_goes_first?' => "Would you like the computer to go first? Press 'y' for yes, any other key for no.\n"
-  }.each do |method_name, method_string|
+  describe '#computer_goes_first?' do
+    it 'returns true if the answer is yes' do
+      input = StringIO.new("2\n")
+      output = StringIO.new
+      display = CliDisplay.new(output, input)
+      display.ask_for_game_type
+      expect(display.computer_goes_first?).to eq true
+    end
+  end
+
+  { 'another_round?' => "Would you like to play again? Press 'y' if so or any other key to quit:\n"}.each do |method_name, method_string|
     describe "#{name}" do
       it 'returns true if the answer is yes' do
         input = StringIO.new("y\n")
