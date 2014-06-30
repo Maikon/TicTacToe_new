@@ -5,16 +5,16 @@ require 'tictactoe/fake_display'
 require 'tictactoe/fake_game'
 require 'spec_helper'
 
-describe Game do
+describe TicTacToe::Game do
   let(:board)   { TicTacToe::Board.new }
   let(:display) { TicTacToe::FakeDisplay.new([1, 2]) }
-  let(:game)    { Game.new(display, board) }
+  let(:game)    { TicTacToe::Game.new(display, board) }
 
   describe '#select_game' do
     it 'human vs computer' do
       display = TicTacToe::FakeDisplay.new(['2', 3, 4])
       board = TicTacToe::Board.new(['X', 'O', 3, 4, 'O', 6, 'O', 'X', 'X'])
-      game = Game.new(display, board)
+      game = TicTacToe::Game.new(display, board)
       game.start
       expect(board.grid).to eq ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X']
     end
@@ -37,7 +37,7 @@ describe Game do
   describe '#move_sequence' do
     it 'does not alter the board if the input is invalid' do
       display = TicTacToe::FakeDisplay.new([false, 2])
-      game = Game.new(display, board)
+      game = TicTacToe::Game.new(display, board)
       game.move_sequence
       expect(board.grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
     end
@@ -47,7 +47,7 @@ describe Game do
     it "plays the game until there's a winner" do
       board = TicTacToe::Board.new(['X', 2, 3, 4, 'O', 6, 7, 8, 9])
       display = TicTacToe::FakeDisplay.new([1, 2, 4, 3, "n\n"])
-      game = Game.new(display, board)
+      game = TicTacToe::Game.new(display, board)
       game.start
       expect(board.grid).to eq ['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]
     end
@@ -55,7 +55,7 @@ describe Game do
     it "plays the game until there's a draw" do
       board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
       display = TicTacToe::FakeDisplay.new([1, 1, 4, 3, 2, "n\n"])
-      game = Game.new(display, board)
+      game = TicTacToe::Game.new(display, board)
       game.start
       expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
     end
@@ -63,7 +63,7 @@ describe Game do
     it "offers the player another round" do
       board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
       display = TicTacToe::FakeDisplay.new([1, 4, 3, 2, "n\n"])
-      game = Game.new(display, board)
+      game = TicTacToe::Game.new(display, board)
       expect(game).to receive(:game_over_sequence)
       game.start
     end
