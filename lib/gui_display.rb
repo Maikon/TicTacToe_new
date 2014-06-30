@@ -9,6 +9,15 @@ class GuiDisplay < Qt::Widget
     add_button_two
   end
 
+  def greet_players
+    label = Qt::Label.new(self)
+    label.alignment = Qt::AlignHCenter
+    label.text = "Welcome to Tic Tac Toe!"
+    label
+  end
+
+  private
+
   def layout_setup
     layout = Qt::VBoxLayout.new(self)
     @buttons_layout = Qt::HBoxLayout.new
@@ -26,11 +35,5 @@ class GuiDisplay < Qt::Widget
     choice_2 = Qt::PushButton.new(self)
     choice_2.text = 'Human Vs Computer'
     @buttons_layout.add_widget(choice_2)
-  end
-
-  def greet_players
-    label = Qt::Label.new(self)
-    label.text = "Welcome to Tic Tac Toe!"
-    label
   end
 end
