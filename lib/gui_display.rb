@@ -27,14 +27,14 @@ class GuiDisplay < Qt::Widget
   end
 
   def add_button_one
-    choice_1 = Qt::PushButton.new(self)
-    choice_1.text = 'Human Vs Human'
-    @buttons_layout.add_widget(choice_1)
+    button = Qt::PushButton.new(self)
+    button.text = 'Human Vs Human'
+    @buttons_layout.add_widget(button)
   end
 
   def add_button_two
-    choice_2 = Qt::PushButton.new(self)
-    choice_2.text = 'Human Vs Computer'
-    @buttons_layout.add_widget(choice_2)
+    button = Qt::PushButton.new(self)
+    button.text = 'Human Vs Computer'
+    @buttons_layout.add_widget(button)
   end
 end
