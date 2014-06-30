@@ -4,6 +4,7 @@ class GuiDisplay < Qt::Widget
 
   def initialize
     super
+    self.windowTitle = 'Tic Tac Toe'
     layout_setup
     add_button_one
     add_button_two
