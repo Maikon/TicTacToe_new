@@ -16,7 +16,7 @@ describe CliDisplay do
 
   describe '#print_board' do
     it 'prints the board' do
-      display.show_board(Board.new.grid)
+      display.show_board(TicTacToe::Board.new.grid)
       expect(output.string).to eq "1 | 2 | 3\n--|---|--\n4 | 5 | 6\n--|---|--\n7 | 8 | 9\n"
     end
   end
