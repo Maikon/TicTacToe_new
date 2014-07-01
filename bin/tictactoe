@@ -6,4 +6,4 @@ require 'board'
 require 'game'
 require 'computer'
 
-Game.new.start
+TicTacToe::Game.new.start

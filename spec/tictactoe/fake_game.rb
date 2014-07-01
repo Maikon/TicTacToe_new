@@ -5,7 +5,6 @@ module TicTacToe
     end
 
     def start_new_game
-      true
     end
   end
 end

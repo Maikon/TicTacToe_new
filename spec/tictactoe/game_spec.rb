@@ -71,8 +71,11 @@ describe TicTacToe::Game do
 
   describe '#start_new_game' do
     it 'clears the screen and starts new game' do
-      game = TicTacToe::FakeGame.new
-      expect(game.start_new_game).to eq true
+      board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
+      display = TicTacToe::FakeDisplay.new([1, 4, 3, 2, "n\n", "1", 1, 5, 2, 4, 3, "n\n"])
+      game = TicTacToe::Game.new(display, board)
+      expect(board).to receive(:reset)
+      game.start_new_game
     end
   end
 end

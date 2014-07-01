@@ -54,7 +54,8 @@ module TicTacToe
 
    def start_new_game
      display.clear_screen
-     Game.new.start
+     board.reset
+     start
    end
  end
 end

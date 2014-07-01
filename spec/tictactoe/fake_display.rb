@@ -41,5 +41,8 @@ module TicTacToe
     def computer_goes_first?(choice)
       choice == '2'
     end
+
+    def clear_screen
+    end
   end
 end
