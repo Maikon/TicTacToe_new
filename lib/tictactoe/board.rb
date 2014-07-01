@@ -45,6 +45,12 @@ module TicTacToe
      winning_combinations.any? { |combo| combo.all? { |cell| cell == mark } }
    end
 
+   def reset
+     grid.each_with_index do |move, index|
+       grid[index] = index + 1
+     end
+   end
+
    private
 
    def winning_combinations

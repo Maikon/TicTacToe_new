@@ -105,4 +105,12 @@ describe TicTacToe::Board do
       expect(board.draw?).to eq true
     end
   end
+
+  describe '#reset' do
+    it 'resets the board' do
+      board = TicTacToe::Board.new(['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'])
+      board.reset
+      expect(board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    end
+  end
 end
