@@ -54,7 +54,7 @@ describe TicTacToe::Game do
 
     it "plays the game until there's a draw" do
       board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
-      display = TicTacToe::FakeDisplay.new([1, 1, 4, 3, 2, "n\n"])
+      display = TicTacToe::FakeDisplay.new([1, 1, 4, 3, 2])
       game = TicTacToe::Game.new(display, board)
       game.start
       expect(board.grid).to eq ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
@@ -62,7 +62,7 @@ describe TicTacToe::Game do
 
     it "offers the player another round" do
       board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
-      display = TicTacToe::FakeDisplay.new([1, 4, 3, 2, "n\n"])
+      display = TicTacToe::FakeDisplay.new([1, 4, 3])
       game = TicTacToe::Game.new(display, board)
       expect(game).to receive(:game_over_sequence)
       game.start
@@ -72,7 +72,7 @@ describe TicTacToe::Game do
   describe '#start_new_game' do
     it 'clears the screen and starts new game' do
       board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
-      display = TicTacToe::FakeDisplay.new([1, 4, 3, 2, "n\n", "1", 1, 5, 2, 4, 3, "n\n"])
+      display = TicTacToe::FakeDisplay.new([1, 4, 3])
       game = TicTacToe::Game.new(display, board)
       expect(board).to receive(:reset)
       game.start_new_game
