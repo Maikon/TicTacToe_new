@@ -24,7 +24,7 @@ describe GuiDisplay do
     expect(find_label_with_text(window, text)).to eq true
   end
 
-  it 'asks user for game type selection' do
+  xit 'gives the user two options' do
     expect(window.find_children(Qt::PushButton).length).to eq 2
     child_1 = window.find_children(Qt::PushButton)[0]
     expect(child_1.text).to eq 'Human Vs Human'
