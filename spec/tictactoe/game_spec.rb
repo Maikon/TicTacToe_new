@@ -89,4 +89,14 @@ describe TicTacToe::Game do
       expect(game.last_move_mark).to eq 'X'
     end
   end
+
+  describe '#valid_move?' do
+    it 'returns true if the move is valid' do
+      expect(game.valid_move?(1)).to eq true
+    end
+
+    it 'returns false if move is not valid' do
+      expect(game.valid_move?('X')).to eq false
+    end
+  end
 end

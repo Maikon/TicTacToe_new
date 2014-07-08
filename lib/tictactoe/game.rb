@@ -43,5 +43,9 @@ module TicTacToe
    def last_move_mark
      board.last_move_mark
    end
+
+   def valid_move?(move)
+     board.available_moves.include?(move)
+   end
  end
 end
