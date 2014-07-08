@@ -31,5 +31,9 @@ module TicTacToe
    def reset
      board.reset
    end
+
+   def board_grid
+     board.grid
+   end
  end
 end

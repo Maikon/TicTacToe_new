@@ -69,4 +69,10 @@ describe TicTacToe::Game do
       expect(board.grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
   end
+
+  describe '#board_grid' do
+    it "returns the board's grid" do
+      expect(game.board_grid).to eq board.grid
+    end
+  end
 end
