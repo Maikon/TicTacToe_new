@@ -41,4 +41,13 @@ describe TicTacToe::Game do
       expect(game.over?).to eq false
     end
   end
+
+  describe '#play_next_move' do
+    it 'marks the given position on the board' do
+      game.play_next_move(1)
+      expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
+      game.play_next_move(5)
+      expect(board.grid).to eq ['X', 2, 3, 4, 'O', 6, 7, 8, 9]
+    end
+  end
 end

@@ -17,5 +17,9 @@ module TicTacToe
    def over?
      board.game_over?
    end
+
+   def play_next_move(input)
+     board.mark_position(input, board.current_mark)
+   end
  end
 end
