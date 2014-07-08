@@ -13,5 +13,9 @@ module TicTacToe
    def draw?
      board.draw?
    end
+
+   def over?
+     board.game_over?
+   end
  end
 end

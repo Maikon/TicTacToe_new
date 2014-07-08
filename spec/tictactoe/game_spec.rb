@@ -29,4 +29,16 @@ describe TicTacToe::Game do
       expect(game.draw?).to eq false
     end
   end
+
+  describe '#over?' do
+    it 'returns true if the game has reached an end state' do
+      board = TicTacToe::Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
+      game = TicTacToe::Game.new(board)
+      expect(game.over?).to eq true
+    end
+
+    it 'returns false if the game has not reached an end state' do
+      expect(game.over?).to eq false
+    end
+  end
 end
