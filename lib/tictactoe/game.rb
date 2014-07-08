@@ -9,5 +9,9 @@ module TicTacToe
    def winner?
      board.winner?
    end
+
+   def draw?
+     board.draw?
+   end
  end
 end
