@@ -1,9 +1,10 @@
 module TicTacToe
  class Game
-   attr_reader :board
+   attr_reader :board, :computer
 
-   def initialize(board)
+   def initialize(board, computer = Computer.new)
      @board = board
+     @computer = computer
    end
 
    def winner?
@@ -20,6 +21,11 @@ module TicTacToe
 
    def play_next_move(input)
      board.mark_position(input, board.current_mark)
+   end
+
+   def computer_makes_move
+     computer.choose_mark(board)
+     computer.make_move(board)
    end
  end
 end

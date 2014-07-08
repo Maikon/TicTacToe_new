@@ -1,5 +1,6 @@
 require 'tictactoe/game'
 require 'tictactoe/board'
+require 'tictactoe/computer'
 require 'spec_helper'
 
 describe TicTacToe::Game do
@@ -48,6 +49,15 @@ describe TicTacToe::Game do
       expect(board.grid).to eq ['X', 2, 3, 4, 5, 6, 7, 8, 9]
       game.play_next_move(5)
       expect(board.grid).to eq ['X', 2, 3, 4, 'O', 6, 7, 8, 9]
+    end
+  end
+
+  describe '#computer_makes_move' do
+    it 'computer makes a move on the board' do
+      board = TicTacToe::Board.new(['X', 'X', 3, 4, 'O', 6, 7, 8, 9])
+      game = TicTacToe::Game.new(board)
+      game.computer_makes_move
+      expect(board.grid).to eq ['X', 'X', 'O', 4, 'O', 6, 7, 8, 9]
     end
   end
 end
