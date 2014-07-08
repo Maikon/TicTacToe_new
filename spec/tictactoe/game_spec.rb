@@ -75,4 +75,10 @@ describe TicTacToe::Game do
       expect(game.board_grid).to eq board.grid
     end
   end
+
+  describe '#current_mark' do
+    it 'returns the current mark' do
+      expect(game.current_mark).to eq 'X'
+    end
+  end
 end

@@ -35,5 +35,9 @@ module TicTacToe
    def board_grid
      board.grid
    end
+
+   def current_mark
+     board.current_mark
+   end
  end
 end
