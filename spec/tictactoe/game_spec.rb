@@ -81,4 +81,12 @@ describe TicTacToe::Game do
       expect(game.current_mark).to eq 'X'
     end
   end
+
+  describe '#last_move_mark' do
+    it 'returns the mark of the last move made' do
+      board = TicTacToe::Board.new(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+      game = TicTacToe::Game.new(board)
+      expect(game.last_move_mark).to eq 'X'
+    end
+  end
 end

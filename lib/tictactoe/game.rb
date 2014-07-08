@@ -39,5 +39,9 @@ module TicTacToe
    def current_mark
      board.current_mark
    end
+
+   def last_move_mark
+     board.last_move_mark
+   end
  end
 end
