@@ -1,8 +1,8 @@
-require 'gui/gui_display'
+require 'tictactoe/gui/gui_display'
 require 'qt'
 
-describe GuiDisplay do
-  let(:window) { GuiDisplay.new }
+describe TicTacToe::GuiDisplay do
+  let(:window) { TicTacToe::GuiDisplay.new }
 
   before(:all) do
     app = Qt::Application.new(ARGV)
