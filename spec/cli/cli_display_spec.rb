@@ -1,4 +1,4 @@
-require 'cli_display'
+require 'cli/cli_display'
 require 'tictactoe/board'
 require 'spec_helper'
 

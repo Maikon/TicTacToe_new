@@ -1,4 +1,4 @@
-require 'gui_display'
+require 'gui/gui_display'
 require 'qt'
 
 describe GuiDisplay do
