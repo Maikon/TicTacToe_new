@@ -2,7 +2,7 @@ module TicTacToe
  class Game
    attr_reader :board, :computer
 
-   def initialize(board, computer = Computer.new)
+   def initialize(board = Board.new, computer = Computer.new)
      @board = board
      @computer = computer
    end
@@ -26,6 +26,10 @@ module TicTacToe
    def computer_makes_move
      computer.choose_mark(board)
      computer.make_move(board)
+   end
+
+   def reset
+     board.reset
    end
  end
 end
