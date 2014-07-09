@@ -12,6 +12,9 @@ module TicTacToe
       until game.over?
         make_move
       end
+      print_winning_message?
+      print_draw_message?
+      play_another_around?
     end
 
     def make_move
@@ -22,6 +25,19 @@ module TicTacToe
       display.show_board(game.board_grid)
       display.ask_for_move(game.current_mark)
     end
+
+    def print_winning_message?
+      display.print_winning_message_for(game.last_move_mark) if game.winner?
+    end
+
+    def print_draw_message?
+      display.print_draw_message if game.draw?
+    end
+
+    def play_another_around?
+      display.another_round?
+    end
+
     private
 
     def validate_move(move)
