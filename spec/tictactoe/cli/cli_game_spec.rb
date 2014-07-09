@@ -1,13 +1,25 @@
 require 'tictactoe/cli/cli_game'
-require 'tictactoe/fake_display'
+require 'tictactoe/cli/cli_display'
 
 describe TicTacToe::CliGame do
+    let(:output)  { StringIO.new }
+    let(:input)   { StringIO.new }
+    let(:display) { TicTacToe::CliDisplay.new(output, input) }
+    let(:game)    { TicTacToe::Game.new }
+
   describe '#start' do
     it 'greets the players' do
-      display = TicTacToe::FakeDisplay.new(false)
-      runner = TicTacToe::CliGame.new(display)
+      runner = TicTacToe::CliGame.new(display, game)
       runner.start
-      expect(display.output).to eq "Welcome to Tic Tac Toe!\n"
+      expect(output.string).to eq "***************\nWelcome to Tic Tac Toe!\n***************\n"
+    end
+  end
+
+  describe '#print_board' do
+    it 'prints the board' do
+      runner = TicTacToe::CliGame.new(display, game)
+      runner.print_board
+      expect(output.string).to eq "1 | 2 | 3\n--|---|--\n4 | 5 | 6\n--|---|--\n7 | 8 | 9\n"
     end
   end
 end
