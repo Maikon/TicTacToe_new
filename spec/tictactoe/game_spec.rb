@@ -7,39 +7,39 @@ describe TicTacToe::Game do
   let(:board) { TicTacToe::Board.new }
   let(:game)  { TicTacToe::Game.new(board) }
 
-  describe '#winner?' do
+  describe '#has_winner?' do
     it 'returns true if there is a winner' do
       board = TicTacToe::Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
       game = TicTacToe::Game.new(board)
-      expect(game.winner?).to eq true
+      expect(game.has_winner?).to eq true
     end
 
     it 'returns false if there is no winner' do
-      expect(game.winner?).to eq false
+      expect(game.has_winner?).to eq false
     end
   end
 
-  describe '#draw?' do
+  describe '#is_draw?' do
     it 'returns true if the game is a draw' do
       board = TicTacToe::Board.new(['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'])
       game = TicTacToe::Game.new(board)
-      expect(game.draw?).to eq true
+      expect(game.is_draw?).to eq true
     end
 
     it 'returns false if the game is not a draw' do
-      expect(game.draw?).to eq false
+      expect(game.is_draw?).to eq false
     end
   end
 
-  describe '#over?' do
+  describe '#is_over?' do
     it 'returns true if the game has reached an end state' do
       board = TicTacToe::Board.new(['X', 'X', 'X', 4, 5, 6, 7, 8, 9])
       game = TicTacToe::Game.new(board)
-      expect(game.over?).to eq true
+      expect(game.is_over?).to eq true
     end
 
     it 'returns false if the game has not reached an end state' do
-      expect(game.over?).to eq false
+      expect(game.is_over?).to eq false
     end
   end
 

@@ -7,15 +7,15 @@ module TicTacToe
      @computer = computer
    end
 
-   def winner?
+   def has_winner?
      board.winner?
    end
 
-   def draw?
+   def is_draw?
      board.draw?
    end
 
-   def over?
+   def is_over?
      board.game_over?
    end
 
