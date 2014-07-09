@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
-require './lib/cli_display.rb'
 $LOAD_PATH << 'lib/tictactoe'
 require 'board'
 require 'game'
 require 'computer'
+require 'cli/cli_display'
+require 'cli/cli_game'
 
-TicTacToe::Game.new.start
+TicTacToe::CliGame.new(TicTacToe::Game.new, TicTacToe::CliDisplay.new).start
