@@ -26,4 +26,16 @@ describe TicTacToe::CliGame do
       runner.start
     end
   end
+
+  describe '#restart_game' do
+    it "clears the screen and starts a new game" do
+      board = TicTacToe::Board.new([1, 2, 3, 4, 'O', 'X', 'X', 'O', 'X'])
+      display = TicTacToe::FakeDisplay.new([1, 4, 3, 2])
+      game = TicTacToe::Game.new(board)
+      runner = TicTacToe::CliGame.new(game, display)
+      expect(game).to receive(:reset)
+      expect(runner).to receive(:start)
+      runner.restart_game
+    end
+  end
 end

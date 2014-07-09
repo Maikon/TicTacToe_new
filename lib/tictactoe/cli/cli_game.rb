@@ -35,7 +35,13 @@ module TicTacToe
     end
 
     def play_another_around?
-      display.another_round?
+      display.another_round? ? restart_game : display.print_farewell_message
+    end
+
+    def restart_game
+      display.clear_screen
+      game.reset
+      start
     end
 
     private
