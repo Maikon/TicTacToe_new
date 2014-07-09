@@ -1,9 +1,11 @@
 module TicTacToe
 
   class FakeDisplay
+    attr_reader :output
 
     def initialize(moves)
       @moves = moves
+      @output = ""
     end
 
     def ask_for_game_type
@@ -11,6 +13,7 @@ module TicTacToe
     end
 
     def greet_players
+      @output << "Welcome to Tic Tac Toe!\n"
     end
 
     def print_winning_message_for(mark)
