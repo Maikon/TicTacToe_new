@@ -3,15 +3,18 @@ require 'tictactoe/cli/cli_display'
 
 describe TicTacToe::CliGame do
     let(:output)  { StringIO.new }
-    let(:input)   { StringIO.new("X\n2\n") }
+    let(:input)   { StringIO.new("X\n2\ny\n1\n5\n2\n4\n3\nn\n") }
     let(:display) { TicTacToe::CliDisplay.new(output, input) }
     let(:game)    { TicTacToe::Game.new }
     let(:runner)  { TicTacToe::CliGame.new(display, game) }
 
   describe '#start' do
-    it 'greets the players' do
+    it 'plays the game' do
+      board = TicTacToe::Board.new(['X', 2, 'X', 'O', 'O', 6, 7, 8, 9])
+      game = TicTacToe::Game.new(board)
+      runner = TicTacToe::CliGame.new(display, game)
       runner.start
-      expect(output.string).to eq "***************\nWelcome to Tic Tac Toe!\n***************\n"
+      expect(game.board_grid).to eq ['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]
     end
   end
 
