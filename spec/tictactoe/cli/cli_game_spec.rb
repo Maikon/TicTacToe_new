@@ -36,5 +36,13 @@ describe TicTacToe::CliGame do
       runner.print_results
       expect(output.string).to eq "X won the game!\n"
     end
+
+    it 'prints the message for a draw' do
+      board = TicTacToe::Board.new(['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'])
+      game = TicTacToe::Game.new(board)
+      runner = TicTacToe::CliGame.new(display, game)
+      runner.print_results
+      expect(output.string).to eq "The game is a draw\n"
+    end
   end
 end
