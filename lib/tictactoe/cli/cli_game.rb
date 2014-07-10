@@ -23,5 +23,9 @@ module TicTacToe
       end
       move
     end
+
+    def print_results
+      display.print_winning_message_for(game.last_move_mark)
+    end
   end
 end
