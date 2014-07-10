@@ -7,4 +7,4 @@ require 'computer'
 require 'cli/cli_display'
 require 'cli/cli_game'
 
-TicTacToe::CliGame.new(TicTacToe::Game.new, TicTacToe::CliDisplay.new).start
+TicTacToe::CliGame.new(TicTacToe::CliDisplay.new, TicTacToe::Game.new).start
