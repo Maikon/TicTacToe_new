@@ -27,5 +27,9 @@ module TicTacToe
     def print_results
       game.has_winner? ? display.print_winning_message_for(game.last_move_mark) : display.print_draw_message
     end
+
+    def mark_position_with(move)
+      game.play_next_move(move)
+    end
   end
 end

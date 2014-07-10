@@ -45,4 +45,11 @@ describe TicTacToe::CliGame do
       expect(output.string).to eq "The game is a draw\n"
     end
   end
+
+  describe '#mark_position_with' do
+    it 'makes a valid move on the board' do
+      runner.mark_position_with(2)
+      expect(game.board_grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
+    end
+  end
 end
