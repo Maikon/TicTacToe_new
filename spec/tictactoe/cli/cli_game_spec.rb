@@ -22,9 +22,9 @@ describe TicTacToe::CliGame do
     end
   end
 
-  describe '#validate_move' do
+  describe '#valid_move' do
     it 'keeps asking user input until move is valid' do
-      expect(runner.validate_move).to eq 2
+      expect(runner.valid_move).to eq 2
     end
   end
 
