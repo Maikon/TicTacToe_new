@@ -31,5 +31,9 @@ module TicTacToe
     def mark_position_with(move)
       game.play_next_move(move)
     end
+
+    def reset_game_board
+      game.reset
+    end
   end
 end

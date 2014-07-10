@@ -52,4 +52,13 @@ describe TicTacToe::CliGame do
       expect(game.board_grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
     end
   end
+
+  describe '#reset_game_board' do
+    it 'resets the game board' do
+      runner.mark_position_with(2)
+      expect(game.board_grid).to eq [1, 'X', 3, 4, 5, 6, 7, 8, 9]
+      runner.reset_game_board
+      expect(game.board_grid).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    end
+  end
 end
