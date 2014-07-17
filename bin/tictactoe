@@ -4,7 +4,7 @@ $LOAD_PATH << 'lib/tictactoe'
 require 'board'
 require 'game'
 require 'computer'
-require 'cli/cli_display'
+require 'cli/display'
 require 'cli/cli_game'
 
-TicTacToe::CliGame.new(TicTacToe::CliDisplay.new, TicTacToe::Game.new).start
+TicTacToe::CliGame.new(TicTacToe::CLI::Display.new, TicTacToe::Game.new).start

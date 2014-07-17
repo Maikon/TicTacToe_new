@@ -1,11 +1,11 @@
-require 'tictactoe/cli/cli_display'
+require 'tictactoe/cli/display'
 require 'tictactoe/board'
 require 'spec_helper'
 
-describe TicTacToe::CliDisplay do
+describe TicTacToe::CLI::Display do
   let(:output)  { StringIO.new }
   let(:input)   { StringIO.new("1\ny\n") }
-  let(:display) { TicTacToe::CliDisplay.new(output, input) }
+  let(:display) { TicTacToe::CLI::Display.new(output, input) }
 
   describe '#greet_players' do
     it 'greets the players' do
@@ -81,7 +81,7 @@ describe TicTacToe::CliDisplay do
     it 'returns true if the answer is yes' do
       input = StringIO.new("2\n")
       output = StringIO.new
-      display = TicTacToe::CliDisplay.new(output, input)
+      display = TicTacToe::CLI::Display.new(output, input)
       choice = display.ask_for_game_type
       expect(display.computer_goes_first?(choice)).to eq true
     end
@@ -91,7 +91,7 @@ describe TicTacToe::CliDisplay do
       it 'returns true if the answer is yes' do
         input = StringIO.new("y\n")
         output = StringIO.new
-        display = TicTacToe::CliDisplay.new(output, input)
+        display = TicTacToe::CLI::Display.new(output, input)
         expect(display.another_round?).to eq true
         expect(output.string).to eq "Would you like to play again? Press 'y' if so or any other key to quit:\n"
     end

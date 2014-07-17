@@ -1,10 +1,10 @@
 require 'tictactoe/cli/cli_game'
-require 'tictactoe/cli/cli_display'
+require 'tictactoe/cli/display'
 
 describe TicTacToe::CliGame do
     let(:output)  { StringIO.new }
     let(:input)   { StringIO.new("X\n2\ny\n1\n5\n2\n4\n3\nn\n") }
-    let(:display) { TicTacToe::CliDisplay.new(output, input) }
+    let(:display) { TicTacToe::CLI::Display.new(output, input) }
     let(:game)    { TicTacToe::Game.new }
     let(:runner)  { TicTacToe::CliGame.new(display, game) }
 
