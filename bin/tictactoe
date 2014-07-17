@@ -5,6 +5,6 @@ require 'board'
 require 'game'
 require 'computer'
 require 'cli/display'
-require 'cli/cli_game'
+require 'cli/game'
 
-TicTacToe::CliGame.new(TicTacToe::CLI::Display.new, TicTacToe::Game.new).start
+TicTacToe::CLI::Game.new(TicTacToe::CLI::Display.new, TicTacToe::Game.new).start

@@ -1,18 +1,18 @@
-require 'tictactoe/cli/cli_game'
+require 'tictactoe/cli/game'
 require 'tictactoe/cli/display'
 
-describe TicTacToe::CliGame do
+describe TicTacToe::CLI::Game do
     let(:output)  { StringIO.new }
     let(:input)   { StringIO.new("X\n2\ny\n1\n5\n2\n4\n3\nn\n") }
     let(:display) { TicTacToe::CLI::Display.new(output, input) }
     let(:game)    { TicTacToe::Game.new }
-    let(:runner)  { TicTacToe::CliGame.new(display, game) }
+    let(:runner)  { TicTacToe::CLI::Game.new(display, game) }
 
   describe '#start' do
     it 'plays the game' do
       board = TicTacToe::Board.new(['X', 2, 'X', 'O', 'O', 6, 7, 8, 9])
       game = TicTacToe::Game.new(board)
-      runner = TicTacToe::CliGame.new(display, game)
+      runner = TicTacToe::CLI::Game.new(display, game)
       runner.start
       expect(game.board_grid).to eq ['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]
     end
@@ -35,7 +35,7 @@ describe TicTacToe::CliGame do
     it 'prints the winning message' do
       board = TicTacToe::Board.new(['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9])
       game = TicTacToe::Game.new(board)
-      runner = TicTacToe::CliGame.new(display, game)
+      runner = TicTacToe::CLI::Game.new(display, game)
       runner.print_results
       expect(output.string).to eq "X won the game!\n"
     end
@@ -43,7 +43,7 @@ describe TicTacToe::CliGame do
     it 'prints the message for a draw' do
       board = TicTacToe::Board.new(['X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O'])
       game = TicTacToe::Game.new(board)
-      runner = TicTacToe::CliGame.new(display, game)
+      runner = TicTacToe::CLI::Game.new(display, game)
       runner.print_results
       expect(output.string).to eq "The game is a draw\n"
     end
