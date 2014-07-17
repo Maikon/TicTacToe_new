@@ -1,11 +1,8 @@
 #!/usr/bin/env ruby
 
-require './lib/gui_display.rb'
-$LOAD_PATH << 'lib/tictactoe'
-require 'board'
-require 'game'
-require 'computer'
+$LOAD_PATH << 'lib'
+require 'tictactoe/gui/gui_display'
 
 app = Qt::Application.new(ARGV)
-GuiDisplay.new.show
+TicTacToe::GUI::GuiDisplay.new.show
 app.exec
