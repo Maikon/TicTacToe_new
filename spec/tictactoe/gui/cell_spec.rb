@@ -14,13 +14,19 @@ describe TicTacToe::GUI::Cell do
     expect(cell).to be_kind_of(Qt::Label)
   end
 
-  it 'takes has a parent and a game upon initialisation' do
-    expect(cell.game).to eq game
-    expect(cell.parent).to be_kind_of(Qt::Widget)
+  it 'should play a move when the game is not over' do
+    game = TicTacToe::Game.new( TicTacToe::Board.new(['X', 2, 'X', 'O', 'O', 6, 7, 8, 9]))
+    parent = double
+    cell = TicTacToe::GUI::Cell.new(parent, game)
+    expect(parent).to receive(:play)
+    cell.mousePressEvent(nil)
   end
 
-  it 'upon click it returns the cell name' do
-    cell.objectName = 1
-    expect(cell.mousePressEvent(nil)).to eq 1
+  it 'does not play when the game is over' do
+    game = TicTacToe::Game.new( TicTacToe::Board.new(['X', 'X', 'X', 'O', 'O', 6, 7, 8, 9]))
+    parent = double
+    cell = TicTacToe::GUI::Cell.new(parent, game)
+    expect(parent).not_to receive(:play)
+    cell.mousePressEvent(nil)
   end
 end

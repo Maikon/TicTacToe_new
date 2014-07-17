@@ -6,12 +6,14 @@ module TicTacToe
       attr_reader :game
 
       def initialize(parent, game)
-        super(parent)
+        super(nil)
+        @parent = parent
         @game = game
       end
 
       def mousePressEvent(_)
-        self.objectName.to_i
+        return if @game.is_over?
+        @parent.play
       end
     end
   end
