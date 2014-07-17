@@ -9,6 +9,10 @@ module TicTacToe
         super(parent)
         @game = game
       end
+
+      def mousePressEvent(_)
+        self.objectName.to_i
+      end
     end
   end
 end
