@@ -13,7 +13,7 @@ module TicTacToe
 
       def mousePressEvent(_)
         return if @game.is_over?
-        @parent.play
+        @parent.play(self)
       end
     end
   end

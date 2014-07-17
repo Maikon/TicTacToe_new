@@ -18,7 +18,7 @@ describe TicTacToe::GUI::Cell do
     game = TicTacToe::Game.new( TicTacToe::Board.new(['X', 2, 'X', 'O', 'O', 6, 7, 8, 9]))
     parent = double
     cell = TicTacToe::GUI::Cell.new(parent, game)
-    expect(parent).to receive(:play)
+    expect(parent).to receive(:play).with(cell)
     cell.mousePressEvent(nil)
   end
 
