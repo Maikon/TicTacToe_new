@@ -1,7 +1,5 @@
-require 'tictactoe/game'
-require 'tictactoe/board'
-require 'tictactoe/computer'
 require 'spec_helper'
+require 'tictactoe/game'
 
 describe TicTacToe::Game do
   let(:board) { TicTacToe::Board.new }
