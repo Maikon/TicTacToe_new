@@ -1,3 +1,6 @@
+require 'tictactoe/board'
+require 'tictactoe/computer'
+
 module TicTacToe
  class Game
    attr_reader :board, :computer
