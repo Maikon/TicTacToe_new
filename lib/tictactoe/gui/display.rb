@@ -10,11 +10,15 @@ module TicTacToe
       def initialize
         super
         @game = Game.new
-        build_grid
+        @grid = Array.new(9) { Cell.new(self, game) }
+        greeting_label
       end
 
-      def build_grid
-        @grid = Array.new(9) { Cell.new(self, game) }
+      def greeting_label
+        @layout = Qt::VBoxLayout.new(self)
+        label = Qt::Label.new
+        label.text = "Welcome to Tic Tac Toe!"
+        @layout.add_widget(label)
       end
 
       def play(object)
