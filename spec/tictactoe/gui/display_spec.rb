@@ -1,12 +1,11 @@
 require 'spec_helper'
+require 'tictactoe/gui/qt_helper'
 require 'tictactoe/gui/display'
 
 describe TicTacToe::GUI::Display do
   let(:display) { TicTacToe::GUI::Display.new }
 
-  before(:all) do
-    app = Qt::Application.new(ARGV)
-  end
+  include_context :qt_helper
 
   it 'has a grid with nine cells' do
     display.grid.each do |cell|
@@ -26,5 +25,9 @@ describe TicTacToe::GUI::Display do
       child.text == "Welcome to Tic Tac Toe!"
     end
     expect(result).to eq true
+  end
+
+  it 'has two radio buttons' do
+    expect(display.find_children(Qt::RadioButton).length).to eq 2
   end
 end

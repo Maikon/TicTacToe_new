@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'tictactoe/gui/qt_helper'
 require 'tictactoe/gui/cell'
 
 describe TicTacToe::GUI::Cell do
@@ -6,9 +7,7 @@ describe TicTacToe::GUI::Cell do
   let(:game)   { TicTacToe::Game.new }
   let(:cell)   { TicTacToe::GUI::Cell.new(parent, game) }
 
-  before(:all) do
-    app = Qt::Application.new(ARGV)
-  end
+  include_context :qt_helper
 
   it 'is an instance of Qt Label' do
     expect(cell).to be_kind_of(Qt::Label)

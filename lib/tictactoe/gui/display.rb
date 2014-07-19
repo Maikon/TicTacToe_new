@@ -11,7 +11,9 @@ module TicTacToe
         super
         @game = Game.new
         @grid = Array.new(9) { Cell.new(self, game) }
+        self.resize(500, 700)
         greeting_label
+        game_options
       end
 
       def greeting_label
@@ -19,6 +21,16 @@ module TicTacToe
         label = Qt::Label.new
         label.text = "Welcome to Tic Tac Toe!"
         @layout.add_widget(label)
+      end
+
+      def game_options
+        @buttons_layout = Qt::HBoxLayout.new
+        @hvh_game = Qt::RadioButton.new(self)
+        @hvc_game = Qt::RadioButton.new(self)
+        @buttons_layout.add_widget(@hvh_game)
+        @buttons_layout.add_widget(@hvc_game)
+        @buttons_layout.set_alignment(Qt::AlignHCenter | Qt::AlignTop)
+        @layout.add_layout(@buttons_layout)
       end
 
       def play(object)
