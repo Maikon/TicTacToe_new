@@ -18,8 +18,10 @@ module TicTacToe
       end
 
       def play(position)
-        game.play_next_move(position)
-        update_grid(position)
+        if game.valid_move?(position)
+          game.play_next_move(position)
+          update_grid(position)
+        end
       end
 
       private
