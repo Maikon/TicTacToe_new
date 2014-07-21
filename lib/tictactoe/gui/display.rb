@@ -6,9 +6,9 @@ module TicTacToe
   module GUI
     class Display < Qt::Widget
       attr_reader :cells, :game, :main_layout, :buttons,
-                  :grid, :hvh_game, :hvc_game
+                  :grid, :hvh_button, :hvc_button
 
-      slots :remove_buttons
+      slots :human_vs_human, :human_vs_computer
 
       def initialize
         super
@@ -17,13 +17,22 @@ module TicTacToe
         self.objectName = 'display'
         self.resize(500, 700)
         main_layout_setup
-        connect(hvh_game, SIGNAL(:pressed), self, SLOT(:remove_buttons))
+        connect(hvh_button, SIGNAL(:pressed), self, SLOT(:human_vs_human))
+        connect(hvc_button, SIGNAL(:pressed), self, SLOT(:human_vs_computer))
       end
 
       def play(position)
         if game.valid_move?(position)
-          game.play_next_move(position)
-          update_grid
+          case @game_type
+          when :hvh
+            game.play_next_move(position)
+            update_grid
+          when :hvc
+            game.play_next_move(position)
+            update_grid
+            game.computer_makes_move
+            update_grid
+          end
         end
       end
 
@@ -41,12 +50,12 @@ module TicTacToe
 
       def game_options_layout
         @buttons = Qt::HBoxLayout.new
-        @hvh_game = Qt::RadioButton.new(self)
-        hvh_game.text = 'Human Vs Human'
-        @hvc_game = Qt::RadioButton.new(self)
-        hvc_game.text = 'Human Vs Computer'
-        buttons.add_widget(hvh_game)
-        buttons.add_widget(hvc_game)
+        @hvh_button = Qt::RadioButton.new(self)
+        hvh_button.text = 'Human Vs Human'
+        @hvc_button = Qt::RadioButton.new(self)
+        hvc_button.text = 'Human Vs Computer'
+        buttons.add_widget(hvh_button)
+        buttons.add_widget(hvc_button)
         buttons.set_alignment(Qt::AlignHCenter | Qt::AlignTop)
         buttons
       end
@@ -71,9 +80,14 @@ module TicTacToe
         end
       end
 
-      def remove_buttons
-        hvh_game.dispose
-        hvc_game.dispose
+      def human_vs_human
+        @game_type = :hvh
+        hvh_button.dispose
+        hvc_button.dispose
+      end
+
+      def human_vs_computer
+        @game_type = :hvc
       end
     end
   end

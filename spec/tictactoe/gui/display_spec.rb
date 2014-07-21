@@ -19,6 +19,7 @@ describe TicTacToe::GUI::Display do
   end
 
   it 'marks the appropriated cell when clicked' do
+    display.hvh_button.click
     display.cells.first.mousePressEvent(nil)
     expect(display.cells[0].text).to eq 'X'
     display.cells[1].mousePressEvent(nil)
@@ -26,6 +27,7 @@ describe TicTacToe::GUI::Display do
   end
 
   it 'does not mark a cell if a cell is marked already' do
+    display.hvh_button.click
     display.cells.first.mousePressEvent(nil)
     expect(display.cells[0].text).to eq 'X'
     display.cells[0].mousePressEvent(nil)
@@ -35,7 +37,14 @@ describe TicTacToe::GUI::Display do
 
   it 'removes the buttons when one is chosen' do
     expect(display.find_children(Qt::RadioButton).length).to eq 2
-    display.hvh_game.click
+    display.hvh_button.click
     expect(display.find_children(Qt::RadioButton).length).to eq 0
+  end
+
+  it 'plays a human vs computer game if the right button is chosen' do
+    display.hvc_button.click
+    expect(display.cells[4].text).to eq nil
+    display.cells[0].mousePressEvent(nil)
+    expect(display.cells[4].text).to eq 'O'
   end
 end
