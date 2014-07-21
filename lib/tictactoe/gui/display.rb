@@ -8,6 +8,8 @@ module TicTacToe
       attr_reader :cells, :game, :main_layout, :buttons,
                   :grid, :hvh_game, :hvc_game
 
+      slots :remove_buttons
+
       def initialize
         super
         @game = Game.new
@@ -15,6 +17,8 @@ module TicTacToe
         self.objectName = 'display'
         self.resize(500, 700)
         main_layout_setup
+        connect(hvh_game, SIGNAL(:pressed), self, SLOT(:remove_buttons))
+        connect(hvc_game, SIGNAL(:pressed), self, SLOT(:remove_buttons))
       end
 
       def play(position)
@@ -64,6 +68,11 @@ module TicTacToe
 
       def update_grid(index)
         grid.itemAt(index - 1).widget.setText(game.last_move_mark)
+      end
+
+      def remove_buttons
+        hvh_game.dispose
+        hvc_game.dispose
       end
     end
   end

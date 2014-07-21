@@ -32,4 +32,10 @@ describe TicTacToe::GUI::Display do
     expect{ display.cells[0].text }.not_to raise_error
     expect(display.cells[0].text).to eq 'X'
   end
+
+  it 'removes the buttons when one is chosen' do
+    expect(display.find_children(Qt::RadioButton).length).to eq 2
+    display.hvh_game.click
+    expect(display.find_children(Qt::RadioButton).length).to eq 0
+  end
 end
