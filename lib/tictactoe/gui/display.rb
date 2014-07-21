@@ -18,13 +18,12 @@ module TicTacToe
         self.resize(500, 700)
         main_layout_setup
         connect(hvh_game, SIGNAL(:pressed), self, SLOT(:remove_buttons))
-        connect(hvc_game, SIGNAL(:pressed), self, SLOT(:remove_buttons))
       end
 
       def play(position)
         if game.valid_move?(position)
           game.play_next_move(position)
-          update_grid(position)
+          update_grid
         end
       end
 
@@ -66,8 +65,10 @@ module TicTacToe
         grid
       end
 
-      def update_grid(index)
-        grid.itemAt(index - 1).widget.setText(game.last_move_mark)
+      def update_grid
+        game.board_grid.each.with_index do |cell, index|
+          cells[index].text = cell if cell.is_a?(String)
+        end
       end
 
       def remove_buttons
