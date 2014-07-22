@@ -15,7 +15,11 @@ module TicTacToe
 
       def mousePressEvent(_)
         return if @game.is_over?
-        @parent.play(self.objectName.to_i)
+        position = self.objectName.to_i
+        if game.valid_move?(position)
+          game.play_next_move(position)
+          @parent.play
+        end
       end
     end
   end
