@@ -5,10 +5,10 @@ require 'tictactoe/game'
 module TicTacToe
   module GUI
     class Display < Qt::Widget
-      attr_reader :cells, :game, :main_layout, :buttons,
-                  :grid, :hvh_button, :hvc_button
+      attr_reader :cells, :game, :main_layout, :buttons, :grid,
+                  :hvh_button, :hvc_button, :cvh_button, :cvc_button
 
-      slots :human_vs_human, :human_vs_computer
+      slots :human_vs_human, :human_vs_computer, :computer_vs_human, :computer_vs_computer
 
       def initialize
         super
@@ -19,6 +19,8 @@ module TicTacToe
         main_layout_setup
         connect(hvh_button, SIGNAL(:pressed), self, SLOT(:human_vs_human))
         connect(hvc_button, SIGNAL(:pressed), self, SLOT(:human_vs_computer))
+        connect(cvh_button, SIGNAL(:pressed), self, SLOT(:computer_vs_human))
+        connect(cvc_button, SIGNAL(:pressed), self, SLOT(:computer_vs_computer))
       end
 
       def play(position)
@@ -45,17 +47,22 @@ module TicTacToe
         label.set_alignment(Qt::AlignHCenter | Qt::AlignTop)
         main_layout.add_widget(label)
         main_layout.add_layout(game_options_layout)
-        main_layout.add_layout(grid_layout)
       end
 
       def game_options_layout
         @buttons = Qt::HBoxLayout.new
         @hvh_button = Qt::RadioButton.new(self)
-        hvh_button.text = 'Human Vs Human'
         @hvc_button = Qt::RadioButton.new(self)
+        @cvh_button = Qt::RadioButton.new(self)
+        @cvc_button = Qt::RadioButton.new(self)
+        hvh_button.text = 'Human Vs Human'
         hvc_button.text = 'Human Vs Computer'
+        cvh_button.text = 'Computer Vs Human'
+        cvc_button.text = 'Computer Vs Computer'
         buttons.add_widget(hvh_button)
         buttons.add_widget(hvc_button)
+        buttons.add_widget(cvh_button)
+        buttons.add_widget(cvc_button)
         buttons.set_alignment(Qt::AlignHCenter | Qt::AlignTop)
         buttons
       end
@@ -81,13 +88,32 @@ module TicTacToe
       end
 
       def human_vs_human
-        @game_type = :hvh
-        hvh_button.dispose
-        hvc_button.dispose
+        @game_choice = :hvh
+        remove_buttons
       end
 
       def human_vs_computer
-        @game_type = :hvc
+        @game_choice = :hvc
+        remove_buttons
+      end
+
+      def computer_vs_human
+        @game_choice = :cvh
+        remove_buttons
+        play
+      end
+
+      def computer_vs_computer
+        @game_choice = :cvc
+        remove_buttons
+        play
+      end
+
+      def remove_buttons
+        [hvh_button, hvc_button, cvh_button, cvc_button].each do |button|
+          button.dispose
+        end
+        main_layout.add_layout(grid_layout)
       end
     end
   end

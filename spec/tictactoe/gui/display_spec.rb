@@ -14,8 +14,8 @@ describe TicTacToe::GUI::Display do
     expect(result).to eq true
   end
 
-  it 'has two radio buttons' do
-    expect(display.find_children(Qt::RadioButton).length).to eq 2
+  it 'has four radio buttons' do
+    expect(display.find_children(Qt::RadioButton).length).to eq 4
   end
 
   it 'marks the appropriated cell when clicked' do
