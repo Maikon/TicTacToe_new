@@ -23,15 +23,19 @@ module TicTacToe
         connect(cvc_button, SIGNAL(:pressed), self, SLOT(:computer_vs_computer))
       end
 
-      def play(position)
-        if game.valid_move?(position)
-          case @game_type
-          when :hvh
-            game.play_next_move(position)
-            update_grid
-          when :hvc
-            game.play_next_move(position)
-            update_grid
+      def play
+        case @game_choice
+        when :hvh
+          update_grid
+        when :hvc
+          update_grid
+          game.computer_makes_move
+          update_grid
+        when :cvh
+          game.computer_makes_move
+          update_grid
+        when :cvc
+          until game.is_over?
             game.computer_makes_move
             update_grid
           end

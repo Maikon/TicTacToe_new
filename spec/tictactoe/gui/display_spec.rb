@@ -36,15 +36,25 @@ describe TicTacToe::GUI::Display do
   end
 
   it 'removes the buttons when one is chosen' do
-    expect(display.find_children(Qt::RadioButton).length).to eq 2
+    expect(display.find_children(Qt::RadioButton).length).to eq 4
     display.hvh_button.click
     expect(display.find_children(Qt::RadioButton).length).to eq 0
   end
 
-  it 'plays a human vs computer game if the right button is chosen' do
+  it 'plays a human vs computer' do
     display.hvc_button.click
     expect(display.cells[4].text).to eq nil
     display.cells[0].mousePressEvent(nil)
     expect(display.cells[4].text).to eq 'O'
+  end
+
+  it 'plays a computer vs human' do
+    display.cvh_button.click
+    expect(display.cells[0].text).to eq 'X'
+  end
+
+  it 'plays a computer vs computer' do
+    display.cvc_button.click
+    expect(display.game.is_draw?).to eq true
   end
 end
