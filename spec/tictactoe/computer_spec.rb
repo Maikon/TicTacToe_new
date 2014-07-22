@@ -1,4 +1,5 @@
 require 'tictactoe/computer'
+require 'tictactoe/board'
 
 describe TicTacToe::Computer do
   describe '#choose_mark' do
@@ -28,6 +29,13 @@ describe TicTacToe::Computer do
   end
 
   describe '#minimax' do
+    it 'marks the center' do
+      board = TicTacToe::Board.new([1, 2, 3, 4, 5, 6, 7, 8, 'X'])
+      computer = TicTacToe::Computer.new
+      computer.choose_mark(board)
+      expect(computer.minimax(board)).to eq 5
+    end
+
     it 'returns winning move' do
       board = TicTacToe::Board.new(['X', 'X', 3, 'O', 5, 6, 'O', 8, 9])
       computer = TicTacToe::Computer.new
@@ -36,10 +44,10 @@ describe TicTacToe::Computer do
     end
 
     it 'returns move preventing loss' do
-      board = TicTacToe::Board.new([1, 'O', 3, 'X', 5, 6, 'X', 8, 9])
+      board = TicTacToe::Board.new(['X', 'O', 3, 4, 'X', 6, 7, 8, 9])
       computer = TicTacToe::Computer.new
       computer.choose_mark(board)
-      expect(computer.minimax(board)).to eq 1
+      expect(computer.minimax(board)).to eq 9
     end
 
     it 'returns move preventing diagonal fork' do
