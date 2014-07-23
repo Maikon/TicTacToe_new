@@ -8,13 +8,13 @@ module TicTacToe
       attr_reader :cells, :game, :main_layout, :buttons, :grid,
                   :hvh_button, :hvc_button, :cvh_button, :cvc_button
 
-      BUTTONS = { :human_vs_human       => :hvh,
-                  :human_vs_computer    => :hvc,
-                  :computer_vs_human    => :cvh,
-                  :computer_vs_computer => :cvc
+      BUTTONS = { :hvh => :human_vs_human,
+                  :hvc => :human_vs_computer,
+                  :cvh => :computer_vs_human,
+                  :cvc => :computer_vs_computer
       }
 
-      slots :human_vs_human, :human_vs_computer, :computer_vs_human, :computer_vs_computer
+      slots BUTTONS[:hvh], BUTTONS[:hvc], BUTTONS[:cvh], BUTTONS[:cvc]
 
       def initialize
         super
@@ -23,24 +23,24 @@ module TicTacToe
         self.objectName = 'display'
         self.resize(500, 700)
         main_layout_setup
-        connect(hvh_button, SIGNAL(:pressed), self, SLOT(:human_vs_human))
-        connect(hvc_button, SIGNAL(:pressed), self, SLOT(:human_vs_computer))
-        connect(cvh_button, SIGNAL(:pressed), self, SLOT(:computer_vs_human))
-        connect(cvc_button, SIGNAL(:pressed), self, SLOT(:computer_vs_computer))
+        connect(hvh_button, SIGNAL(:pressed), self, SLOT(BUTTONS[:hvh]))
+        connect(hvc_button, SIGNAL(:pressed), self, SLOT(BUTTONS[:hvc]))
+        connect(cvh_button, SIGNAL(:pressed), self, SLOT(BUTTONS[:cvh]))
+        connect(cvc_button, SIGNAL(:pressed), self, SLOT(BUTTONS[:cvc]))
       end
 
       def play
         case @game_choice
-        when :hvh
+        when BUTTONS[:hvh]
           update_grid
-        when :hvc
+        when BUTTONS[:hvc]
           update_grid
+          game.computer_makes_move if !game.is_over?
+          update_grid
+        when BUTTONS[:cvh]
           game.computer_makes_move
           update_grid
-        when :cvh
-          game.computer_makes_move
-          update_grid
-        when :cvc
+        when BUTTONS[:cvc]
           until game.is_over?
             game.computer_makes_move
             update_grid
@@ -101,25 +101,25 @@ module TicTacToe
       end
 
       def human_vs_human
-        button_clicked(:human_vs_human)
+        button_clicked(:hvh)
       end
 
       def human_vs_computer
-        button_clicked(:human_vs_computer)
+        button_clicked(:hvc)
       end
 
       def computer_vs_human
-        button_clicked(:computer_vs_human)
+        button_clicked(:cvh)
       end
 
       def computer_vs_computer
-        button_clicked(:computer_vs_computer)
+        button_clicked(:cvc)
       end
 
       def button_clicked(btn)
         @game_choice = BUTTONS[btn]
         remove_buttons
-        play if @game_choice == :cvh || @game_choice == :cvc
+        play if btn == :cvh || btn == :cvc
       end
 
       def remove_buttons
