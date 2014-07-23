@@ -8,6 +8,12 @@ module TicTacToe
       attr_reader :cells, :game, :main_layout, :buttons, :grid,
                   :hvh_button, :hvc_button, :cvh_button, :cvc_button
 
+      BUTTONS = { :human_vs_human       => :hvh,
+                  :human_vs_computer    => :hvc,
+                  :computer_vs_human    => :cvh,
+                  :computer_vs_computer => :cvc
+      }
+
       slots :human_vs_human, :human_vs_computer, :computer_vs_human, :computer_vs_computer
 
       def initialize
@@ -60,7 +66,7 @@ module TicTacToe
         end
         { hvh_button => 'Human Vs Human',
           hvc_button => 'Human Vs Computer',
-          cvh_button => 'Computer Vs Computer',
+          cvh_button => 'Computer Vs Human',
           cvc_button => 'Computer Vs Computer'
         }.each do |button, description|
           button.text = description
@@ -95,25 +101,25 @@ module TicTacToe
       end
 
       def human_vs_human
-        @game_choice = :hvh
-        remove_buttons
+        button_clicked(:human_vs_human)
       end
 
       def human_vs_computer
-        @game_choice = :hvc
-        remove_buttons
+        button_clicked(:human_vs_computer)
       end
 
       def computer_vs_human
-        @game_choice = :cvh
-        remove_buttons
-        play
+        button_clicked(:computer_vs_human)
       end
 
       def computer_vs_computer
-        @game_choice = :cvc
+        button_clicked(:computer_vs_computer)
+      end
+
+      def button_clicked(btn)
+        @game_choice = BUTTONS[btn]
         remove_buttons
-        play
+        play if @game_choice == :cvh || @game_choice == :cvc
       end
 
       def remove_buttons
