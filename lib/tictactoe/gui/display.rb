@@ -55,20 +55,23 @@ module TicTacToe
 
       def game_options_layout
         @buttons = Qt::HBoxLayout.new
-        @hvh_button = Qt::RadioButton.new(self)
-        @hvc_button = Qt::RadioButton.new(self)
-        @cvh_button = Qt::RadioButton.new(self)
-        @cvc_button = Qt::RadioButton.new(self)
-        hvh_button.text = 'Human Vs Human'
-        hvc_button.text = 'Human Vs Computer'
-        cvh_button.text = 'Computer Vs Human'
-        cvc_button.text = 'Computer Vs Computer'
-        buttons.add_widget(hvh_button)
-        buttons.add_widget(hvc_button)
-        buttons.add_widget(cvh_button)
-        buttons.add_widget(cvc_button)
+        %w{hvh_button hvc_button cvh_button cvc_button}.each do |button|
+          create_button(button)
+        end
+        { hvh_button => 'Human Vs Human',
+          hvc_button => 'Human Vs Computer',
+          cvh_button => 'Computer Vs Computer',
+          cvc_button => 'Computer Vs Computer'
+        }.each do |button, description|
+          button.text = description
+          buttons.add_widget(button)
+        end
         buttons.set_alignment(Qt::AlignHCenter | Qt::AlignTop)
         buttons
+      end
+
+      def create_button(button)
+        instance_variable_set "@#{button}", Qt::RadioButton.new(self)
       end
 
       def grid_layout
